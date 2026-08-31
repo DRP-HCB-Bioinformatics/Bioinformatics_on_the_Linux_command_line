@@ -1,0 +1,79 @@
+---
+title: "Intro To Linux"
+format: html
+---
+
+```{=html}
+<script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
+```
+
+## Managing Tools with Conda
+
+One of the essential things in bioinformatics is the ability to install tools. On the server, often installation is limited to admins only. Sometimes this can take a long time or when testing new tools, we don't want to disturb the admins. Thankfully, there is a solution to be able to easily install tools in your home. Conda and mamba are two managers that are essential to get to know, both are part of miniforge. 
+
+Conda and mamba are often used to install tools within something called environments. This means that multiple tools can be installed within your home folder without interfering with other tools. Tools in bioinformatics have very different requirements which will clash, using environments we can still install multiple tools on the same machine with ease. Below is a short guide on how to install miniforge, create an environment and install tools. \
+\
+First, miniforge needs to be downloaded. To get online files to our machines easily, `wget` can be used.
+
+``` bash
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+```
+
+If you want to use mamba instead, install [micromamba](https://github.com/mamba-org/micromamba-releases). All the other commands will be the same, just replace `conda` with `mamba`
+
+Once the file has been downloaded, the installation can begin. 
+
+``` bash
+bash ./Miniforge3-Linux-x86_64.sh
+```
+
+The licensing will be printed on screen, you can scroll on using `space` or `enter`. Make sure to accept the license and then set the location for installation. By default it installs in your home folder, generally this is a good place to install miniforge. The installation itself will take a few minutes.
+At the end of the installation, miniforge will ask if you want to initiate. Yes means that everytime you start a shell connection, miniforge will be active. No means you need to activate it yourself. To activate, run the following:
+
+``` bash
+source ~/miniforge3/bin/activate
+```
+
+To check if miniforge is active, `(base)` will be added to the start of your command line. Once this is active, `conda` can be used to create an environment. As an example, we will create an environment and install `STAR` into it. The following will create an environment:
+
+``` bash
+conda create -n STAR
+```
+
+We need to accept that the environment is being created. To activate the new environment:
+
+``` bash
+conda activate STAR
+```
+
+The start of our command line should now change to `(STAR)`. Lets actually install `STAR`:
+
+``` bash
+conda install STAR
+```
+
+Accept the installation. Once finished, this mean that `STAR` is installed without interfering with any other tools or asking an admin to install it for us. As long as the environment is active, the command can be run. 
+\
+
+We can double check this is now installed in our home by using `type`. This will tell were the installation location of a tool is.
+
+``` bash
+type STAR
+```
+
+Finally, to deactivate the environment:
+
+``` bash
+conda deactivate
+```
+
+Whenever needed, you can install tools in your home. Tools can be installed together, especially if they need to be run together. However, the more tools installed, the more likely you tun into installation issues. 
+\
+
+If ever you need to check which environments you have installed, a list can be created. 
+
+``` bash
+conda env list
+```
+
+Further information and best practices for managing tools on these servers can be found [here](https://drp-hcb-bioinformatics.github.io/DRP-HCB-Bioinformatics/software.html)

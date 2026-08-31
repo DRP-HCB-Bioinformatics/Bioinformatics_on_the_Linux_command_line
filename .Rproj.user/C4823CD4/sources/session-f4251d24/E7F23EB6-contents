@@ -1,0 +1,158 @@
+---
+title: "Intro To Linux"
+format: html
+---
+
+```{=html}
+<script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
+```
+
+## Pipes and redirects
+
+Some of the power of Linux comes from the ability to string commands together to form "pipelines".
+With the `|` pipe symbol, the output of one command can be used as the input for a second command. The command left of the pipe symbol will feed into the one on the right of the pipe symbol. 
+\
+For example, if we would want to count the number of lines in a gzipped file, this can be done by first using the `zcat` to get the uncompressed content of the file, and then piping the output of `zcat` into `wc` to count the lines and characters within the file:
+
+``` bash
+cd ~/Intro_to_Linux/yeast_files/
+
+zcat raw_yeast_rnaseq_data.fastq.gz | wc
+```
+
+If you would simply run `wc` on the file, you will get a result, however it will be nonsense as `wc` doesn't know how to decrompress the file before counting the content. You might think that the `wc` command should be enhanced to work on gzipped files, but with pipes there is no need; you can simply join the commands together to make your own. 
+\
+\
+In the case we  want to save the results of a command into a file, we can use redirects with the `>` symbol.Rather than printing results to the terminal, this symbol will write to the filename given after the `>` symbol. \
+For example, we want to create a file named `my_commands.txt` that contains the text "My commands:", followed by our command history. 
+To be able to create this, we need to add the first line which is "My commands:" to a new file. This can be done using the `echo` command, which simply prints out the text that you give it. We then need to redirect the results of the command into a file. 
+
+``` bash
+echo "My commands:" > my_commands.txt
+```
+
+:::: challenge
+<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+
+Check if the file has been created and the content of the file is what we redirected into it. 
+
+<details>
+
+<summary>Solution</summary>
+
+::: solution
+<h2><i class="far fa-eye"></i> Solution:</h2>
+
+Remember that we can use a `cat` or `less` to take a look at the content of a file.
+
+``` bash
+cat my_commands.txt
+```
+:::
+
+</details>
+::::
+\
+
+Now that we have the header set, we need to add the content of our command history. We can get our history using the `history` command. Using the `>` we can redirect the output to a file. 
+
+
+``` bash
+history > my_commands.txt
+
+head my_commands.txt
+```
+
+It seems that the file has been overwritten and the redirect has removed our originally added header. With redirects, Linux overwrites existing files without warning. Luckily, there is a way to add to an existing file without overwriting it, using `>>`.
+
+``` bash
+echo "My commands:" > my_commands.txt
+
+history >> my_commands.txt
+
+head my_commands.txt
+```
+
+Now, the original content has been kept and the history of commands has been added to the file. 
+
+:::: key-points
+<h2><i class="fas fa-thumbtack"></i> Key points</h2>
+
+There are several different options to redirect output. 
+
+- `>` redirects output, overwriting if a file exists
+- `>>` redirects output and adds the results to an existing file
+- `2>` will redirect errors only, overwriting if a file exists
+- `2>>` will redirect errors only and adding errors to an existing file
+- `2>&1` redirects errors to the terminal screen
+
+:::
+\
+
+## Exercises
+
+Below are a number of exercises exploring files and redirection. 
+
+:::: exercise
+<h2><i class="fa fa-pencil-alt"></i> Exercise 1:</h2>
+
+Go into the yeast_files folder. Save the first 20 lines of the `raw_yeast_rnaseq_data.fastq.gz` to a file named `header.txt`, without unpacking the gzipped file.
+
+<details>
+<summary>Solution</summary>
+::: solution
+<h2><i class="far fa-eye"></i> Solution:</h2>
+
+The first thing we should do is extract the content of the gzipped file. With `zcat` we can print the whole file to the terminal, we can pipe this into the `head` command to extract the first lines, remember that we can change the number of lines we want with `-n`. And finally we can redirect the results into a file.  
+
+``` bash
+cd ~/Intro_to_Linux/yeast_files
+
+zcat raw_yeast_rnaseq_data.fastq.gz | head -n 20 > header.txt
+```
+:::
+</details>
+::::
+\
+
+:::: exercise
+<h2><i class="fa fa-pencil-alt"></i> Exercise 2:</h2>
+
+Extract the lines starting with an `@` from the gzipped file. Print the last 10 lines to screen.
+
+<details>
+<summary>Solution</summary>
+::: solution
+<h2><i class="far fa-eye"></i> Solution:</h2>
+
+We can search within a gzipped file using `zgrep`. To search for lines starting with an `@` we have to use the `^` symbol. Once we have these extracted, to extract the last 10 lines we can use `tail`. By default, it takes the last 10 lines.
+
+``` bash
+zgrep "^@" raw_yeast_rnaseq_data.fastq.gz | tail
+```
+:::
+</details>
+::::
+\
+
+:::: exercise
+<h2><i class="fa fa-pencil-alt"></i> Exercise 3:</h2>
+
+Extract the lines starting with an `@` from the gzipped file. Print the first and the last 10 lines to a file called `names.txt`.
+
+<details>
+<summary>Solution</summary>
+::: solution
+<h2><i class="far fa-eye"></i> Solution:</h2>
+
+We can search within a gzipped file using `zgrep`. To search for lines starting with an `@` we have to use the `^` symbol. Once we have these extracted, to extract the last 10 lines we can use `tail`. By default, it takes the last 10 lines.
+
+``` bash
+zgrep "^@" raw_yeast_rnaseq_data.fastq.gz | head > names.txt
+
+zgrep "^@" raw_yeast_rnaseq_data.fastq.gz | tail >> names.txt
+```
+:::
+</details>
+::::
+\

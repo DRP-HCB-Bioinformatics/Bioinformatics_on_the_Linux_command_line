@@ -1,0 +1,84 @@
+---
+title: "Intro To Linux"
+format: html
+---
+
+```{=html}
+<script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
+```
+
+
+## Nano
+
+There are several command line text editors available, today we will briefly look at nano. Just typing `nano` will open a new blank file
+
+``` bash
+nano
+```
+
+Try typing some text into your editor, nano specific options are shown at the bottom (run by holing CTRL + your chosen option).
+
+To save your file use `CTRL+O`, it will then prompt you to name your file: 
+
+File Name to Write: myfile.txt
+
+You can then exit with `CTRL+X`
+
+
+:::: challenge
+<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+
+Check to see if the file has been created and what it contains
+
+<details>
+
+<summary>Solution</summary>
+
+::: solution
+<h2><i class="far fa-eye"></i> Solution:</h2>
+
+
+``` bash
+ls
+cat myfile.txt
+```
+
+:::
+
+</details>
+::::
+\
+
+
+We can also open a existing file with nano;
+
+``` bash
+nano myfile.txt
+```
+
+If you edit this file and then try to exit without saving, it will prompt you with 
+'Save modified buffer?' Y/N before again clarifying output file name (Useful!).
+
+
+Earlier we created a file called my_commands.txt, open this with nano and make some annotations (generally '#' are used to denote comments) and clean up the file however you like.
+
+``` bash
+nano my_commands.txt
+```
+Here, I've added a comment to remind me of an option (Note, your numbers on the left of command history will differ):
+
+``` bash
+ 2013  date
+ # Using -u displays the date in UTC time
+ 2014  date -u
+ 2015  date --help
+ ```
+ 
+You can navigate with arrow keys but the 'Where Is' `CTRL+W` function may be useful here.
+
+
+There are other more powerful command line text editors available such as vim or emacs, although these have a steep learning curve. Of course, more demanding tasks will require the use of advanced GUI based text editors or IDEs but hopefully you can see when it might be useful to be able to quickly edit files. 
+
+
+
+

@@ -1,0 +1,179 @@
+---
+title: "Intro To Linux"
+format: html
+---
+
+```{=html}
+<script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
+```
+
+## Why?
+
+One of the first questions people often ask is: Why do I need Linux? If people are familiar with graphical interfaces used for programs in Windows, why do bioinformaticians use command line? The short answer is that command line and Linux are lightweight, highly flexible, and maybe most importantly for research: free. Besides this, many bioinformatics tools are written and used without a graphical interface, which keeps them lightweight. This makes command line knowledge essential for bioinformatic data processing.
+
+Like Windows and macOS, Linux is an operating system. It manages the computer's hardware and allows you to run applications. There are many different versions (or distributions) of Linux. Some commercial distributions have a paid licence, but many are completely free. One of the most popular choices is Ubuntu, which is free to download, easy to install, and widely used by both beginners and experienced users. It is the also the version of Linux installed on the DRP-HCB servers.
+
+One thing to note is that bioinformaticians are not the only people who use Linux. Linux powers a large proportion of the world's servers, supercomputers, and cloud computing infrastructure. Many of these systems do not have a graphical user interface. Instead, they are controlled through the command line. By avoiding the overhead of a graphical interface, more memory and processing power are available for running computationally intensive tasks, such as analysing genomic data.
+
+## Bash Shell
+
+If many Linux servers do not have a graphical user interface, how do we interact with them? The answer is through the command line. If you have ever used Command Prompt or PowerShell on Windows, the basic idea is very similar. Instead of clicking buttons and navigating menus, you only use the keyboard, you type commands to tell the computer what you want it to do.
+
+Linux has a specific vocabulary for how to ask for things, it contains a large collection of built-in commands that allow you to perform almost any task. These commands let you navigate through directories, create and edit files, move or copy data, install software, and run programs. While there are many different Linux distributions, the vast majority use the same core commands, so the skills you learn on one distribution are generally transferable to others. Occasionally, there are small differences, but these are usually minor.
+
+The environment in which you type and execute these commands is called a shell. The shell acts as an interpreter between you and the operating system: it reads the command you type, executes it, and displays the results. At first, using the command line can feel unfamiliar because there are no buttons or menus to guide you. Instead, you communicate with the computer using commands and options, much like learning a new language. Throughout this course, you will gradually learn the most useful commands and develop the confidence to navigate the Linux operating system efficiently.
+
+## Connecting
+
+Today, we will connect to one of the DRP servers to start our Linux journey. Connecting to the server is dependent on the machine you are working with. To connect
+
+-   Both Linux and Mac have a "Terminal", which is command line and can connect to a server using ssh.
+By typing in the following in your terminal, you can easily connect to the DRP server. \
+*Replace \<UUN\> by your own UUN or username.*
+
+``` bash
+ssh <UUN>@bifx-core1.bio.ed.ac.uk
+```
+
+-   For Windows, a tool like [MobaXTerm](https://mobaxterm.mobatek.net/download.html) needs to be installed to be able to connect to a server easily.
+Connecting uses ssh in this case as well. Take a look at the [MobaXTerm demo](https://mobaxterm.mobatek.net/demo.html) to learn how to connect using ssh. Make sure to use you UUN as your username and the server link as follow:
+``` bash
+bifx-core1.bio.ed.ac.uk
+```
+
+You might be asked if you trust the server, make sure to answer yes. Once you've entered your password you should connect to the server and see something like the following:
+
+``` bash
+Welcome to Ubuntu 24.04.4 LTS (GNU/Linux 6.8.0-117-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+################################################################################
+THIS DEVICE IS PART OF A PRIVATE NETWORK.
+
+Unauthorised access or use of this equipment is prohibited 
+and constitutes an offence under the Computer Misuse Act 1990.
+If you are not authorised to use this system, terminate this 
+session now.
+
+All activity on this system is monitored and recorded.
+
+Please direct any queries to IS.Helpline@ed.ac.uk.
+
+################################################################################
+<UUN>@bifx-core1:~$
+```
+This prompt shows that you are logged in to the bifx-core1 bioinformatics server, and that you are in your home directory (which is referred to using the ~ character on Linux systems).
+
+Please see our [website](https://drp-hcb-bioinformatics.github.io/DRP-HCB-Bioinformatics/user_policy.html) for more specific instructions on using the DRP-HCB bioinformatics servers.
+
+## Commands
+
+The basic structure of most Linux command is as followed:
+
+**command \[option(s)\] \[argument(s)\]**
+
+-   command: the operation or program you want Linux to execute
+-   options (also called flags or switches): modify the way the command works
+-   arguments: filenames or other targets that direct the action of the command
+
+Options and arguments are not always needed for commands to run. If no options or arguments are given, default settings will be used. We can run commands by typing in the command and pressing \[ENTER\].
+
+Here an example of default behaviour versus using options.
+
+``` bash
+date
+```
+
+The command will result in the date will be displayed in BST (British Summer Time). However if we use the -u option:
+
+***Note:** be aware to put a space between the command and the option*
+
+``` bash
+date -u
+```
+
+The date will be displayed in UTC (Coordinated Universal Time). So using options we can change the behavior of the command.
+
+:::: challenge
+<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+
+Try to break the command by using other options. What happens?
+
+<details>
+
+<summary>Solution</summary>
+
+::: solution
+<h2><i class="far fa-eye"></i> Solution:</h2>
+
+Run date with -p (`date -p`), you should get an error telling you what you are doing is invalid.
+
+:::
+
+</details>
+::::
+
+## Help
+
+While the use of options and arguments makes commands more powerful and flexible, they can be difficult to remember, and can vary between different versions of the command. Luckily, there are several ways to find out what a command does and what options are available for a command. Most commands can be use with the **--help** or **-h** option, which will provide a description of the command and the options. 
+
+``` bash
+date --help
+```
+
+In some cases, commands will not have the --help or -h option. In these cases, `man` or `info` might be available. These all work in similar ways, below an example of how to use man. 
+
+``` bash
+man date
+```
+
+For both `man` and `info`, to get out of the information screen, press `Q`. 
+
+:::: challenge
+<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+
+Run the command:\
+``` bash
+date -d '25 Dec' +%j
+```
+Using the help options, can you explain what this command has done?
+
+<details>
+
+<summary>Solution</summary>
+
+::: solution
+<h2><i class="far fa-eye"></i> Solution:</h2>
+
+Looking the result of the command, we can already see that this give a number. Look at the %j option in the help of date, it explains in the help that %j gives the number of the day of the year. The 25th of December is the 359th day of the year (unless it is a leap year then it is the 360th day).
+
+:::
+</details>
+
+:::
+
+## Tips
+
+Working within Linux sometimes means we want to see what we did previous or rerun commands. Using the `Arrow Up` and `Arrow Down` keys we can explore and rerun without having to write the whole command again.
+
+There are few shortcuts within our shell that will come in handy whenever we are working within our environments.
+
+
+:::: key-points
+<h2><i class="fas fa-thumbtack"></i> Key points</h2>
+
+- `Ctrl+a` or `Home` will move the caret (or text cursor) to the beginning of the line
+- `Ctrl+e` or `End` will move the caret to the end of the line
+- `Ctrl+k` will delete text from the current position of the caret to the end of the line
+- `Ctrl+y` or the middle mouse button will paste the last selected text at the caret position
+- `Ctrl+l` will clear the terminal
+- `Tab` will try to complete your command or filename from the previously typed text. \
+For example if you want to run `bedtools`, you can type *bedto* and press `Tab` to complete.
+If there are multiple options, it won't complete the name. Press `Tab` twice to see the options available. For example try to type *bed* and press `Tab` twice
+
+Be aware that `Ctrl+c`, which is normally used for copying selected text, will terminate any command that you are currently running. If you want to copy something from the terminal, use the right mouse button to copy.
+
+::::
+
