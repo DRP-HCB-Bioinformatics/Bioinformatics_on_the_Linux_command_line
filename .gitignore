@@ -1,0 +1,5 @@
+# Quarto execution & cache
+/.quarto/
+
+# RStudio specific
+.Rproj.user/
