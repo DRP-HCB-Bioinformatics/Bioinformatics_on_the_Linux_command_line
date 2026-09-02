@@ -1,5 +1,5 @@
 ---
-title: "Intro To Linux"
+title: "Text Editors"
 format: html
 ---
 
@@ -7,28 +7,38 @@ format: html
 <script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
 ```
 
-
 ## Nano
 
-There are several command line text editors available, today we will briefly look at nano. Just typing `nano` will open a new blank file
+Several command line text editors exist for creating and editing files.
+
+- Highly customisable and extensible:
+  - [emacs](https://www.gnu.org/software/emacs/): 
+  - [vim](https://www.vim.org/): 
+- Beginner friendly:
+  - [nano](https://www.nano-editor.org/): 
+
+Today we will briefly look at `nano`, which is simple to use and installed on all Linux distributions. Nano is specifically designed for editing plain text files, the staple input/output format used by most command line tools.
+
+Command line text editors are not designed to take the place of feature rich graphical word processors for creating highly formatted documents (Microsoft Word, Google Docs etc). Instead, they are fast and versatile editors for command line programming.
+
+Just typing `nano` will open a new blank file.
 
 ``` bash
 nano
 ```
 
-Try typing some text into your editor, nano specific options are shown at the bottom (run by holing CTRL + your chosen option).
+Try typing some text into your editor. Specific options are shown at the bottom (run by holding CTRL + your chosen option).
 
 To save your file use `CTRL+O`, it will then prompt you to name your file: 
 
-File Name to Write: myfile.txt
+`File Name to Write: myfile.txt`
 
-You can then exit with `CTRL+X`
-
+You can then exit with `CTRL+X`.
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 1:</h2>
 
-Check to see if the file has been created and what it contains
+Check to see if the file has been created and what it contains.
 
 <details>
 
@@ -47,10 +57,8 @@ cat myfile.txt
 
 </details>
 ::::
-\
 
-
-We can also open a existing file with nano;
+We can also open a existing file with nano.
 
 ``` bash
 nano myfile.txt
@@ -59,8 +67,7 @@ nano myfile.txt
 If you edit this file and then try to exit without saving, it will prompt you with 
 'Save modified buffer?' Y/N before again clarifying output file name (Useful!).
 
-
-Earlier we created a file called my_commands.txt, open this with nano and make some annotations (generally '#' are used to denote comments) and clean up the file however you like.
+Earlier, we created a file called my_commands.txt. Open this with nano and make some annotations (generally '#' are used to denote comments) and clean up the file however you like.
 
 ``` bash
 nano my_commands.txt
@@ -74,11 +81,4 @@ Here, I've added a comment to remind me of an option (Note, your numbers on the 
  2015  date --help
  ```
  
-You can navigate with arrow keys but the 'Where Is' `CTRL+W` function may be useful here.
-
-
-There are other more powerful command line text editors available such as vim or emacs, although these have a steep learning curve. Of course, more demanding tasks will require the use of advanced GUI based text editors or IDEs but hopefully you can see when it might be useful to be able to quickly edit files. 
-
-
-
-
+You can navigate with the arrow keys but the 'Where Is' `CTRL+W` function may be useful here.

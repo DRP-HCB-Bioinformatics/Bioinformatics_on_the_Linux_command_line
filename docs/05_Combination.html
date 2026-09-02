@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro To Linux – Introduction to Linux</title>
+<title>Command output – Introduction to Linux</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -75,9 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_Combination.html">Combining Commands</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_Combination.html">Command output</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_Exploration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploring The Filesystem</span></a>
+ <span class="menu-text">Exploring the Filesystem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Combination.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Combining Commands</span></a>
+ <span class="menu-text">Command output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_Installation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Managing Tools</span></a>
+ <span class="menu-text">Managing Software</span></a>
   </div>
 </li>
     </ul>
@@ -214,7 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pipes-and-redirects" id="toc-pipes-and-redirects" class="nav-link active" data-scroll-target="#pipes-and-redirects">Pipes and redirects</a></li>
+  <li><a href="#redirecting-output-to-file" id="toc-redirecting-output-to-file" class="nav-link active" data-scroll-target="#redirecting-output-to-file">Redirecting output to file</a></li>
+  <li><a href="#combining-commands-pipes" id="toc-combining-commands-pipes" class="nav-link" data-scroll-target="#combining-commands-pipes">Combining commands (pipes)</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
 </nav>
@@ -224,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro To Linux</h1>
+<h1 class="title">Command output</h1>
 </div>
 
 
@@ -242,23 +243,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
-<section id="pipes-and-redirects" class="level2">
-<h2 class="anchored" data-anchor-id="pipes-and-redirects">Pipes and redirects</h2>
-<p>Some of the power of Linux comes from the ability to string commands together to form “pipelines”. With the <code>|</code> pipe symbol, the output of one command can be used as the input for a second command. The command left of the pipe symbol will feed into the one on the right of the pipe symbol.<br>
-For example, if we would want to count the number of lines in a gzipped file, this can be done by first using the <code>zcat</code> to get the uncompressed content of the file, and then piping the output of <code>zcat</code> into <code>wc</code> to count the lines and characters within the file:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux/yeast_files/</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">zcat</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">wc</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If you would simply run <code>wc</code> on the file, you will get a result, however it will be nonsense as <code>wc</code> doesn’t know how to decrompress the file before counting the content. You might think that the <code>wc</code> command should be enhanced to work on gzipped files, but with pipes there is no need; you can simply join the commands together to make your own.<br>
-<br>
-In the case we want to save the results of a command into a file, we can use redirects with the <code>&gt;</code> symbol.Rather than printing results to the terminal, this symbol will write to the filename given after the <code>&gt;</code> symbol.<br>
-For example, we want to create a file named <code>my_commands.txt</code> that contains the text “My commands:”, followed by our command history. To be able to create this, we need to add the first line which is “My commands:” to a new file. This can be done using the <code>echo</code> command, which simply prints out the text that you give it. We then need to redirect the results of the command into a file.</p>
+<section id="redirecting-output-to-file" class="level2">
+<h2 class="anchored" data-anchor-id="redirecting-output-to-file">Redirecting output to file</h2>
+<p>So far, most of our command outputs have been printed to screen without saving the results or doing anything with the results. Here we will look at how to direct our outputs into a file.</p>
+<p>To write the results of a command into a file, we can redirect the output with the <code>&gt;</code> symbol. Rather than printing results to the terminal, this symbol will write to the filename given after the <code>&gt;</code> symbol.</p>
+<p>For example, let’s create a file named <code>my_commands.txt</code> that contains the text “My commands:”, followed by our command history.</p>
+<p>We first need to add the line “My commands:” to a new file. This can be done using the <code>echo</code> command, which simply prints out the text that you give it.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"My commands:"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If instead, we redirect the output to a file then the text will be saved.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"My commands:"</span> <span class="op">&gt;</span> my_commands.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 1:
 </h2>
-<p>Check if the file has been created and the content of the file is what we redirected into it.</p>
+<p>Check if the file has been created and contains the redirected output.</p>
 <details>
 <summary>
 Solution
@@ -273,13 +271,11 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<p>Now that we have the header set, we need to add the content of our command history. We can get our history using the <code>history</code> command. Using the <code>&gt;</code> we can redirect the output to a file.</p>
+<p>Now that we have the header, we need to add the content of our command history. We can get our history using the <code>history</code> command. Using <code>&gt;</code> we can redirect the output to our file.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">history</span> <span class="op">&gt;</span> my_commands.txt</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> my_commands.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>It seems that the file has been overwritten and the redirect has removed our originally added header. With redirects, Linux overwrites existing files without warning. Luckily, there is a way to add to an existing file without overwriting it, using <code>&gt;&gt;</code>.</p>
+<p>It seems that the file has been overwritten and the redirect has removed our original header. With redirects, Linux overwrites existing files without warning. Luckily, there is a way to append to an existing file without overwriting it, using <code>&gt;&gt;</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"My commands:"</span> <span class="op">&gt;</span> my_commands.txt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">history</span> <span class="op">&gt;&gt;</span> my_commands.txt</span>
@@ -293,14 +289,36 @@ Solution
 <p>There are several different options to redirect output.</p>
 <ul>
 <li><code>&gt;</code> redirects output, overwriting if a file exists</li>
-<li><code>&gt;&gt;</code> redirects output and adds the results to an existing file</li>
+<li><code>&gt;&gt;</code> redirects output and appends the results to an existing file</li>
 <li><code>2&gt;</code> will redirect errors only, overwriting if a file exists</li>
 <li><code>2&gt;&gt;</code> will redirect errors only and adding errors to an existing file</li>
-<li><code>2&gt;&amp;1</code> redirects errors to the terminal screen</li>
+<li><code>2&gt;&amp;1</code> redirects errors to the standard output (useful if you want to record errors and outputs together)</li>
 </ul>
 </div>
-<p><br>
-</p>
+</section>
+<section id="combining-commands-pipes" class="level2">
+<h2 class="anchored" data-anchor-id="combining-commands-pipes">Combining commands (pipes)</h2>
+<p>Some of the power of Linux comes from the ability to string commands together to form “pipelines”. Using the <code>|</code> pipe symbol, the output of one command can be used as the input for a second command.</p>
+<p>For example, if we want to count the number of lines in a gzipped file, this can be done by first using <code>zcat</code> to get the uncompressed content of the file and piping the output into <code>wc</code> to count the lines and characters within the file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux/yeast_files/</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">zcat</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">wc</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you simply run <code>wc</code> on the file, you will get a result, however it will be nonsense as <code>wc</code> doesn’t know how to decompress the file before counting the content.</p>
+<p>Let’s say we want to find the first five lines in <code>raw_yeast_rnaseq_data.fastq.gz</code> that contains the sequence <em>ACTG</em>.</p>
+<p>We could perform this in three separate commands and save the input as we go:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Save the uncompressed output</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">zcat</span> raw_yeast_rnaseq_data.fastq.gz <span class="op">&gt;</span> raw_yeast_rnaseq_data.fastq</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Find all lines with ACTG</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"ACTG"</span> raw_yeast_rnaseq_data.fastq <span class="op">&gt;</span> ACTG_raw_yeast_rnaseq_data.txt</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">## Print the first five lines</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 ACTG_raw_yeast_rnaseq_data.txt</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Remove intermediate files</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> raw_yeast_rnaseq_data.fastq ACTG_raw_yeast_rnaseq_data.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Pipes are particularly as they remove the need to create these large intermediate files. They can also save time. In this example, there is no need to keep reading the input file once five instances of <em>ACTG</em> are found. When we pipe commands, all commands will terminate when the final command has completed. This can save considerable time with large files.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zcat</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"ACTG"</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="exercises" class="level2">
 <h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
@@ -319,15 +337,13 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>The first thing we should do is extract the content of the gzipped file. With <code>zcat</code> we can print the whole file to the terminal, we can pipe this into the <code>head</code> command to extract the first lines, remember that we can change the number of lines we want with <code>-n</code>. And finally we can redirect the results into a file.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux/yeast_files</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">zcat</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 20 <span class="op">&gt;</span> header.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The first thing we should do is extract the content of the gzipped file. With <code>zcat</code> we can print the whole file to the terminal, then pipe this into the <code>head</code> command to extract the first lines. Remember that we can change the number of lines we want with <code>-n</code>. And finally we can redirect the results into a file.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux/yeast_files</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">zcat</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 20 <span class="op">&gt;</span> header.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 2:
@@ -342,18 +358,17 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>We can search within a gzipped file using <code>zgrep</code>. To search for lines starting with an <code>@</code> we have to use the <code>^</code> symbol. Once we have these extracted, to extract the last 10 lines we can use <code>tail</code>. By default, it takes the last 10 lines.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zgrep</span> <span class="st">"^@"</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">tail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can search within a gzipped file using <code>zgrep</code>. To search for lines starting with an <code>@</code> we have to use the <code>^</code> symbol. Once we have these extracted, print the last 10 lines with <code>tail</code>. By default, it prints the last 10 lines.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zgrep</span> <span class="st">"^@"</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">tail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 3:
 </h2>
 <p>Extract the lines starting with an <code>@</code> from the gzipped file. Print the first and the last 10 lines to a file called <code>names.txt</code>.</p>
+<p>NOTE: You can’t do this in a single command. You will need to get the first 10 lines and last 10 lines separately and combine them in a single output file.</p>
 <details>
 <summary>
 Solution
@@ -363,15 +378,13 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>We can search within a gzipped file using <code>zgrep</code>. To search for lines starting with an <code>@</code> we have to use the <code>^</code> symbol. Once we have these extracted, to extract the last 10 lines we can use <code>tail</code>. By default, it takes the last 10 lines.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zgrep</span> <span class="st">"^@"</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">head</span> <span class="op">&gt;</span> names.txt</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">zgrep</span> <span class="st">"^@"</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">tail</span> <span class="op">&gt;&gt;</span> names.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can use <code>&gt;&gt;</code> to append the output of our second command to the output of our first command.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zgrep</span> <span class="st">"^@"</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">head</span> <span class="op">&gt;</span> names.txt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">zgrep</span> <span class="st">"^@"</span> raw_yeast_rnaseq_data.fastq.gz <span class="kw">|</span> <span class="fu">tail</span> <span class="op">&gt;&gt;</span> names.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 
 
 </section>

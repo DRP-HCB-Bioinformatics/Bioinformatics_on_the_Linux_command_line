@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro To Linux – Introduction to Linux</title>
+<title>Bioinformatics 101 – Introduction to Linux</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -75,9 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_Exploration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploring The Filesystem</span></a>
+ <span class="menu-text">Exploring the Filesystem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Combination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combining Commands</span></a>
+ <span class="menu-text">Command output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_Installation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Managing Tools</span></a>
+ <span class="menu-text">Managing Software</span></a>
   </div>
 </li>
     </ul>
@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#files-types" id="toc-files-types" class="nav-link active" data-scroll-target="#files-types">Files Types</a></li>
+  <li><a href="#file-types" id="toc-file-types" class="nav-link active" data-scroll-target="#file-types">File Types</a></li>
   <li><a href="#tools" id="toc-tools" class="nav-link" data-scroll-target="#tools">Tools</a></li>
   <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
   <li><a href="#threads" id="toc-threads" class="nav-link" data-scroll-target="#threads">Threads</a></li>
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro To Linux</h1>
+<h1 class="title">Bioinformatics 101</h1>
 </div>
 
 
@@ -245,10 +245,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
-<section id="files-types" class="level2">
-<h2 class="anchored" data-anchor-id="files-types">Files Types</h2>
-<p>Linux is often used to be able to analyse large amounts of data. Whenever the data comes from a biological source, we call this type of analysis bioinformatics. There are a number of common files that are used in many of the different types of analysis. We have seen two of them, FASTQ and BED files are both common files for bioinformatics analysis.<br>
-Many of the most common types of file that you will have to work with as a bioinformatician take the form of structured text files, examples include:</p>
+<section id="file-types" class="level2">
+<h2 class="anchored" data-anchor-id="file-types">File Types</h2>
+<p>Linux is often used to analyse large amounts of data. Whenever the data comes from a biological source, we call this type of analysis bioinformatics. There are a number of common files that are used in many different types of analysis. We have seen two of them so far, FASTQ and BED.</p>
+<p>Many of the most common types of file that you will have to work with as a bioinformatician take the form of structured text files, examples include:</p>
 <ul>
 <li>Standard formats for representing raw sequences
 <ul>
@@ -262,25 +262,28 @@ Many of the most common types of file that you will have to work with as a bioin
 <li><a href="https://en.wikipedia.org/wiki/SAM_(file_format)">SAM</a></li>
 </ul></li>
 </ul>
-<p>These types of files have very specific formats, which make sure that we always know what files should look like, tools can recognize the files, and all in all it makes life easier. Some tools in bioinformatics are very specific to accomplish specific tasks.</p>
+<p>These standard file formats have specific structures. This ensures that information is always recorded in the same way and provides compatibility with bioinformatics software and tools.</p>
 </section>
 <section id="tools" class="level2">
 <h2 class="anchored" data-anchor-id="tools">Tools</h2>
-<p>For today, we will look at a fairly typical task within bioinformatics, which is aligning reads to an existing reference genome. To simplify things, the following choices about the analysis have been make:</p>
+<p>Today, we will look at a fairly typical bioinformatics task; aligning reads to an existing reference genome. To simplify things, the following choices about the analysis have been made:</p>
 <ol type="1">
 <li>We will skip any pre-processing of reads, even though they might contain adapter sequences or low quality data.</li>
-<li><strong>STAR</strong> will be used for aligning reads, this is a very popular aligner for RNA-seq data. Many different tools are available, but most of the tools will produce <strong>SAM</strong> files are outputs.</li>
-<li>The <strong>samtools</strong> package will be used to view and summarize the produced <strong>SAM</strong> files. Again other toolkits are available, however <strong>samtools</strong> is a very popular and often used tool.</li>
-<li>Finally, <strong>bedtools</strong> will be used to look at reads mapping to gene regions of the reference genome.</li>
+<li><strong>STAR</strong> will be used for aligning reads, this is a very popular aligner for RNA-seq data. Many different tools are available, but most of the tools will produce <strong>SAM</strong> files as outputs.</li>
+<li>The <strong>samtools</strong> package will be used to view and summarise the resulting <strong>SAM</strong> files. Again other toolkits are available, however <strong>samtools</strong> is a very popular and commonly used tool.</li>
+<li>Finally, we will use <strong>bedtools</strong> to look at reads mapping to gene regions of the reference genome.</li>
 </ol>
 <p>By default, these tools are not installed on Linux servers and have to be installed separately.</p>
+<p><strong>Note:</strong> This is not a full pipeline, we will provide examples of more thorough sequencing analyses in future workshops.</p>
 </section>
 <section id="analysis" class="level2">
 <h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
-<p>First, lets take a look at the files. These files are in the <code>yeast_files</code> directory. The reference genome is captured in the <code>yeast_genome.fasta</code>, which contains the sequence, and the <code>yeast_genes.bed</code> file, which contains the annotation of gene locations.</p>
+<p>First, lets take a look at the data. We are going to align RNA-seq reads from <em>saccharomyces cerevisiae</em> to the yeast reference genome. The files are in the <code>yeast_files</code> directory.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux/yeast_files/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The reference genome sequence is stored in <code>yeast_genome.fasta</code>, while gene annotations and locations are recorded in <code>yeast_genes.bed</code>.</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 1:
 </h2>
 Print the first 5 lines for each of the reference genome files.
 <details>
@@ -293,28 +296,40 @@ Solution
 <i class="far fa-eye"></i> Solution:
 </h2>
 <p>To get the first 5 lines of a file, we can use the <code>head</code> command.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux/yeast_files/</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 yeast_genome.fasta</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 yeast_genes.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 yeast_genome.fasta</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 yeast_genes.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<p>The first column of the BED file refers to the chromosome name, and in the FASTA file the name behind the <code>&gt;</code> symbol refers to the name of the chromosome. As you can see, there is a discrepancy between the file and the names for the chromosome. Therefore, we need to fix that before we can move on. The easiest fix is to remove <code>chr</code> from the BED file. For this, the command <code>sed</code> can be used, which can replace patterns in a file with another piece of text. For example:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">"s/^chr//"</span> yeast_genes.bed <span class="op">&gt;</span> yeast_genes_fixed.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>In the command above, the pattern between the first two <code>/</code> is the text we want to replace, the text between the second and third <code>/</code> is the replacement text. The results are then written to the <code>yeast_genes_fixed.bed</code>. To confirm the replacement has worked, lets run the <code>head</code> command again.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 yeast_genes_fixed.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This only confirms it for the first few lines. To check throughout the file, there are a number of different commands that will be helpful. To look at only 1 column within a file, the <code>cut</code> command will come in handy. Once the first column is selected, the <code>sort</code> and <code>uniq</code> are extremely useful to summarize the results:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 1 yeast_genes_fixed.bed <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Showing us what the unique values that are in the first column.</p>
+<p>The first column of the BED file refers to the chromosome name, and in the FASTA file the name behind the <code>&gt;</code> symbol refers to the name of the chromosome. As you can see, there is a discrepancy between the files and the names for the chromosome.</p>
+<p>This is a common problem in bioinformatics, as data can come from different sources and use different naming conventions. We need to fix this problem before we move on. The easiest fix is to remove <code>chr</code> from the BED file. For this, the <code>sed</code> command can be used, which can replace patterns in a file with another piece of text. For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">"s/^chr//"</span> yeast_genes.bed <span class="op">&gt;</span> yeast_genes_fixed.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Let’s break down the sed command:</p>
+<ul>
+<li><code>s</code> stands for search and replace
+<ul>
+<li>The pattern between the first two <code>/</code> is the text we want to search for</li>
+<li>The text between the second and third <code>/</code> is the replacement text</li>
+</ul></li>
+<li>Thus <code>s/^chr//</code> will find lines that begin with “chr” and remove these three characters.</li>
+</ul>
+<p>The results are written to <code>yeast_genes_fixed.bed</code>. Note that <code>sed</code> does not edit the original file <code>yeast_genes.bed</code>. Inline editing is possible with <code>-i</code> option in sed.</p>
+<p>To confirm the replacement has worked, lets run the <code>head</code> command again.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 yeast_genes_fixed.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This only confirms it for the first few lines. To check throughout the file, we can pipe a few useful commands together.</p>
+<ul>
+<li><code>cut</code> can extract columns of data from a file</li>
+<li><code>sort</code> provides classic character and numerical sort functionality</li>
+<li><code>uniq</code> removes consecutive lines that are duplicated</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 1 yeast_genes_fixed.bed <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The command above will thus show us the unique values in the first column of <code>yeast_genes_fixed.bed</code>.</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 2:
 </h2>
-<p>Explore the command. Make sure you understand the different steps taken. See if you can count the number of genes for each chromosome. <em>Hint: take a look at the <code>uniq</code> command, it has an option to count values</em></p>
+<p>See if you can produce a count for the number of genes per chromosome. <em>Hint: take a look at the <code>uniq</code> command, it has an option to count values</em></p>
 <details>
 <summary>
 Solution
@@ -324,36 +339,39 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>To get the first 5 lines of a file, we can use the <code>head</code> command.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">uniq</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The <code>uniq</code> command has an option <code>-c</code>. If we add that to the command, it should give us a count of each chromosome.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 1 yeast_genes_fixed.bed <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">uniq</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>uniq</code> command has an option <code>-c</code>. If we add that to the command, it should give us a count of the number of lines (genes) for each chromosome.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 1 yeast_genes_fixed.bed <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<p>The files are now setup to get started with our analysis. This is just an example of some of the commands you will come across when doing bioinformatics. <strong>Note:</strong> This is not a full pipeline, in some of our future training days we will go through how to do specific analyses.</p>
-<p>To be able to map reads against a reference genome, the genome has to be indexed. Indexing is used by mappers to make mapping faster and easier. Most tools that do mapping will have the option to create an index. The command to create an index for <code>STAR</code> will need a specific folder to save the index in. The command is the following:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> star_index</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">STAR</span> <span class="at">--runThreadN</span> 5 <span class="at">--runMode</span> genomeGenerate <span class="at">--genomeDir</span> ./star_index <span class="at">--genomeFastaFiles</span> ./yeast_genome.fasta <span class="at">--genomeSAindexNbases</span> 10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Once the index has been created, the reads can be mapped against the genome. The command will need links to the index folder and the raw reads to be able to map them correctly. Many commands can run on multiple cpus or threads. We will look more into how to determine how many you can use later, for now it can be set to 2 threads.<br>
-The output is an <code>BAM</code> file, which is the binary version of a <code>SAM</code> file. It contains the information of how reads are mapped.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">STAR</span> <span class="at">--genomeDir</span> ./star_index/ <span class="at">--readFilesIn</span> ./raw_yeast_rnaseq_data.fastq.gz <span class="at">--runThreadN</span> 2 <span class="at">--outFileNamePrefix</span> raw_yeast_rnaseq_data. <span class="at">--outSAMtype</span> BAM SortedByCoordinate  <span class="at">--readFilesCommand</span> <span class="st">'gunzip -c'</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To get an idea of how many of the reads have mapped to the reference genome, <code>samtools</code> can be used to get a general overview.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> flagstat raw_yeast_rnaseq_data.Aligned.sortedByCoord.out.bam</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>From the results we can see that 100% of the reads have mapped against the reference genome. Many of the reads have secondary locations were the reads map, meaning that a read has two location on the genome where it mapped. For RNA data this is a normal occurrence.<br>
-<br>
-</p>
-<p>To look at how much of the genome is covered, <code>bedtools</code> is the perfect tool to use.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bedtools</span> genomecov <span class="at">-ibam</span> raw_yeast_rnaseq_data.Aligned.sortedByCoord.out.bam <span class="at">-bg</span> <span class="op">&gt;</span> raw_yeast_rnaseq_data.genomecov.bg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Follow by a second command to see how many of the reads are mapped against gene regions.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bedtools</span> intersect <span class="at">-c</span> <span class="at">-a</span> yeast_genes_fixed.bed <span class="at">-b</span> raw_yeast_rnaseq_data.Aligned.sortedByCoord.out.bam <span class="op">&gt;</span> raw_yeast_overlap_data.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Within this file, for each gene the amount of reads mapping against it is captured in the 7th column.</p>
+<p>Now that our genome annotation files are compatible, we can proceed with aligning RNA-seq reads to the reference. The first step is to index the genome. Indexing is used by mappers to make mapping faster and easier. Most alignment tools have the option to create an index. The command to create an index for <code>STAR</code> is below:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Create a folder for the index</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> star_index</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Run STAR in genomeGenerate mode</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">STAR</span> <span class="at">--runThreadN</span> 5 <span class="at">--runMode</span> genomeGenerate <span class="at">--genomeDir</span> star_index <span class="at">--genomeFastaFiles</span> yeast_genome.fasta <span class="at">--genomeSAindexNbases</span> 10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>--runThreadN</code> option tells STAR how many ‘threads’ or ‘CPUs’ to use. Many command line tools can run on multiple CPUs to speed up processing. However, you should be wary of hogging all of the compute power on a shared server. We will look into how to determine the number of threads later.</p>
+<p>The <code>--genomeSAindexNbases</code> option controls the size of the index created. You can read more about the various options available in the <a href="https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf">STAR documentation</a>.</p>
+<p>Once the index has been created, the reads can be mapped to the genome. The command requires paths to the raw reads and the index folder.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">STAR</span> <span class="at">--genomeDir</span> star_index <span class="at">--readFilesIn</span> raw_yeast_rnaseq_data.fastq.gz <span class="at">--runThreadN</span> 2 <span class="at">--outFileNamePrefix</span> raw_yeast_rnaseq_data. <span class="at">--outSAMtype</span> BAM SortedByCoordinate <span class="at">--readFilesCommand</span> <span class="st">'gunzip -c'</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>--readFilesCommand 'gunzip -c'</code> option instructs STAR to unzip the compressed fastq files.</p>
+<p>The output is a <code>BAM</code> file, which is the binary version of a <code>SAM</code> file. It contains a lot of information about each read and its alignment to the genome.</p>
+<p>We can use <code>samtools flagstat</code> to check how many reads map to the reference genome.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> flagstat raw_yeast_rnaseq_data.Aligned.sortedByCoord.out.bam</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can see that 100% of the reads map to the reference genome. Many of the reads have secondary locations, meaning that the read aligns to multiple locations on the genome. For RNA-seq data this is a normal occurrence.</p>
+<p>The <a href="">bedtools</a> package has many tools for performing operations on genomic data. We can use <code>genomecov</code> to convert a BAM file into a <strong>bedgraph</strong> file of sequencing coverage. The output <strong>bedgraph</strong> file shows the sum of sequencig reads overlapping each genomic base.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bedtools</span> genomecov <span class="at">-ibam</span> raw_yeast_rnaseq_data.Aligned.sortedByCoord.out.bam <span class="at">-bg</span> <span class="op">&gt;</span> raw_yeast_rnaseq_data.genomecov.bg</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> raw_yeast_rnaseq_data.genomecov.bg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can use <code>intersect</code> to count the number of reads overlapping each gene in <code>yeast_genes_fixed.bed</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bedtools</span> intersect <span class="at">-c</span> <span class="at">-a</span> yeast_genes_fixed.bed <span class="at">-b</span> raw_yeast_rnaseq_data.Aligned.sortedByCoord.out.bam <span class="op">&gt;</span> raw_yeast_overlap_data.bed</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> raw_yeast_overlap_data.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For each gene, the number of overlapping reads is recorded in the 7th column.</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 3:
 </h2>
 <p>What is the maximum amount of reads mapping to a gene?</p>
 <p><em>Hint: Use the <code>cut</code> and <code>sort</code> commands, check the <code>--help</code> of <code>sort</code> to see how to sort numeric values.</em></p>
@@ -367,20 +385,18 @@ Solution
 <i class="far fa-eye"></i> Solution:
 </h2>
 <p>Using <code>cut</code> we can extract the 7th column and then sort them by number.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">--help</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 7 raw_yeast_overlap_data.bed <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">--help</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 7 raw_yeast_overlap_data.bed <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-n</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The maximum count is 3,730 reads.</p>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 4:
 </h2>
-<p>Can you find out which gene has this amount of reads mapping against it? The name of the gene is captured in column 4.</p>
+<p>Can you find which gene has the highest read count?</p>
 <p><em>Hint: Use <code>grep</code></em></p>
 <details>
 <summary>
@@ -392,13 +408,19 @@ Solution
 <i class="far fa-eye"></i> Solution:
 </h2>
 <p>Using <code>grep</code> we can extract the exact number.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"3730"</span> raw_yeast_overlap_data.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"3730"</span> raw_yeast_overlap_data.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>There are different lines that contain this number, but only one in the last column, which is for the gene “RDN37-2”.</p>
 </div>
 </details>
 </div>
-<p><br>
-</p>
+<p>Alternatively, <code>sort</code> allows you to sort a file by specific columns.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-k7,7nr</span> raw_yeast_overlap_data.bed <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can break this down as follows:</p>
+<ul>
+<li><code>-k7,7</code>: Sort using the column range 7,7 (We could use multiple columns)</li>
+<li><code>-n</code>: Perform a numerical sort</li>
+<li><code>-r</code>: Perform a reverse sort to output the results in descending order</li>
+</ul>
 </section>
 <section id="threads" class="level2">
 <h2 class="anchored" data-anchor-id="threads">Threads</h2>
@@ -410,7 +432,7 @@ To check how many processes are currently running, there are two commands to use
 </ul>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 5:
 </h2>
 <p>Using <code>htop</code>, can you see how many tasks are running?</p>
 <details>
@@ -426,20 +448,18 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <p>Before running any process, it is good to check what the status of the system is.</p>
 </section>
 <section id="awk" class="level2">
 <h2 class="anchored" data-anchor-id="awk">AWK</h2>
-<p>Lastly, one powerful command line tool that can be very helpful, though somewhat complex, is <code>awk</code>. It can help analyse, filter or manipulate structured files. Lets look at an example to see if we can use <code>awk</code> to find out the longest genes within our genome. Gene length isn’t captured within the BED file, however the start and stop position are given. To find the longest genes, the follow command will give us the top 10 longest genes.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="at">-v</span> OFS=<span class="st">'\t'</span> <span class="st">'{print $4,$3-$2}'</span> yeast_genes_fixed.bed <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-k2,2nr</span> <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Lastly, one powerful command line tool that can be very helpful, though somewhat complex, is <code>awk</code>. It can help analyse, filter or manipulate structured files. Lets look at an example to see if we can use <code>awk</code> to find the longest genes within our genome. Gene length isn’t captured within the BED file, however the start and stop position are given. The follow command will give us the top 10 longest genes.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="at">-v</span> OFS=<span class="st">'\t'</span> <span class="st">'{print $4,$3-$2}'</span> yeast_genes_fixed.bed <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-k2,2nr</span> <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Lets break down the command, because this is complex.</p>
 <ul>
 <li><code>-F '\t'</code> sets what the separator is within the file. This is the character which is between the columns. <code>\t</code> as we saw at regular expressions means <code>tab</code>.</li>
 <li><code>-v OFS='\t'</code> tells <code>awk</code> that the output should be <code>tab</code> separated as well</li>
 <li><code>'{print $4,$3-$2}'</code> is where the magic happens. <code>awk</code> processes every line of a file one by one. It separates the all the columns and renames them to <code>$1</code>, <code>$2</code>, etc to the last column index. This means we can make changes to the order, but also do calculations with the different columns. If we substract the start position of our gene from the stop position, it will give the gene length. What this means for this part of the command is that it will report the 4th column followed by the stop column minus the start column.</li>
-<li><code>sort -k2,2nr</code> will sort the resulting list. <code>-k2</code> specifies the list should be sorted by the second column, and <code>2nr</code> specifies that the second column is numeric and it should be sorted in the reverse order.</li>
+<li><code>sort -k2,2nr</code> will sort the resulting list. <code>-k2,2</code> specifies the list should be sorted by the second column, and <code>nr</code> specifies that the sort is numeric and should be sorted in the reverse order.</li>
 </ul>
 <p>If <code>awk</code> is of interest to you, take a look at <a href="https://www.gnu.org/software/gawk/manual/">Effective AWK Programming</a>. Don’t worry if this looks extremely complex, this is an advanced Linux command that will become more useful as you get into more difficult challenges.</p>
 

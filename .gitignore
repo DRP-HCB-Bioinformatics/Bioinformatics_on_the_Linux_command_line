@@ -3,3 +3,5 @@
 
 # RStudio specific
 .Rproj.user/
+
+**/*.quarto_ipynb

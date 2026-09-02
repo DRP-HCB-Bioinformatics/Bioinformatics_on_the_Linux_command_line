@@ -1,5 +1,5 @@
 ---
-title: "Intro To Linux"
+title: "Installing Software"
 format: html
 ---
 
@@ -7,7 +7,7 @@ format: html
 <script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
 ```
 
-## Managing Tools with Conda
+## Managing Software with Conda
 
 One of the essential things in bioinformatics is the ability to install tools. On the server, often installation is limited to admins only. Sometimes this can take a long time or when testing new tools, we don't want to disturb the admins. Thankfully, there is a solution to be able to easily install tools in your home. Conda and mamba are two managers that are essential to get to know, both are part of miniforge. 
 

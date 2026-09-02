@@ -1,15 +1,15 @@
 ---
-title: "Intro To Linux"
+title: "Bioinformatics on the Linux command line"
 format: html
 ---
 
-Welcome to the Introduction to Linux day taught by the Bioinformatics core at the [Discovery Research Platform for Hidden Cell Biology](https://biology.ed.ac.uk/drp), today we will go over several different essential topics for using Linux and Linux servers.
+Welcome to our introductory Linux command line workshop. 
 
 During this course you will learn to:
 
 -   Connect to a server
 -   Navigate the file system using the Linux command shell
 -   Use basic shell commands to view and filter data
--   Look at some basic bioinformatics tools
+-   Perform basic analysis with bioinformatics tools
 
-If you have any questions please contact Daniel Robertson, Heleen de Weerd or Shaun Webb.
+This course is hosted by the Bioinformatics Core at the [Discovery Research Platform for Hidden Cell Biology](https://biology.ed.ac.uk/drp).

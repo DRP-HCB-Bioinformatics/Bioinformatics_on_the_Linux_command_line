@@ -1,5 +1,5 @@
 ---
-title: "Intro To Linux"
+title: "Exploring the Filesystem"
 format: html
 ---
 
@@ -10,13 +10,15 @@ format: html
 ## System structure
 
 Before we get to work with Linux, it is good to know how the system is structured. Files on Linux are grouped into **directories** (also called folders, similar to Windows and Mac). The directories are structured in a tree structure. This means directories are within other directories, creating a complex hierarchical tree like structure. At the base of it all is the **root directory**, which is indicated with "/". This directory holds everything. It can contain **files** and **subdirectories**. Each subdirectory in turn can contain other files and subdirectories, and those can contain files and subdirectories, and so on. \
-An example of the file system is shown below. UUN in this figure should be replaced with your own UUN to find your own home directory.
+An example of the file system is shown below.
+
+User directories are usually stored in the `/home` directory and named after each user. UUN in the figure below should be replaced with your own UUN to find your own home directory.
 
 ![](images/LinuxFileSystem.png){fig-align="center"}
 
 It is vital to understand that you always work within a specific directory and any commands you run will be run in the context of that specific directory.
 
-There are a few special characters when working within the file system that refer to specific folders. We have seen two already, and in the table below and overview is give of these special characters that can be used to browse the tree.
+There are a few special characters, when working within the file system, that refer to specific folders. The table below gives an overview of the special characters that can be used to browse the tree.
 
 | Character | Meaning |
 |------|------|
@@ -25,41 +27,44 @@ There are a few special characters when working within the file system that refe
 |   .   |   current directory   |
 |   ..   |  parent directory    |
 
-\
-With the knowledge of what the tree looks like and the use of special characters, we should be able to find our files. To identify any file or directory we need to determine its **path**. The path is the route to the file or directory starting from a directory. Paths are written as the list of directory names separated by a forward slash.\
-For example `/home/johndoe/mouse_genome.fa` links to a file named mouse_genome in the home folder belonging to johndoe. When referring to files starting from the root directory, we call these paths **absolute paths**. Basically, what this means is that no matter who is logged in, the path will refer to a specific file. \
-If I am logged in as user johndoe, `~/mouse_genome.fa` would link to the same file. When creating paths that do not use the root directory as a base, we call these paths **relative paths**. They will work for specific users or from specific folders.
-\
-If you are every in doubt, use the absolute paths (start the path from the root).
 
-:::: key-points
+With the knowledge of what the tree looks like and the use of special characters, we should be able to find our files. To identify any file or directory we need to determine its **path**. The path is the route to the file or directory starting from a directory. Paths are written as the list of directory names separated by a forward slash.
+
+For example `/home/johndoe/mouse_genome.fa` links to a file named mouse_genome in the home folder belonging to johndoe. When referring to files starting from the root directory, we call these paths **absolute paths**. This means that no matter where you are in the filesystem, the path will always refer to the same file.
+
+We can also use **relative paths**, which are paths that start from the current working directory. For example, if we are currently in the home directory of user johndoe, we can refer to the same file simply as `mouse_genome.fa`. Relative paths are generally shorter and easier to type, but they are dependent on the current working directory.
+
+A user logged in as janedoe would have a different home directory under `/home/janedoe`, and the relative path `mouse_genome.fa` would only work if they also had a file named mouse_genome.fa in their home directory. Still, they would be working with a different file from johndoe. To access the same file as johndoe, janedoe would need to use the absolute path `/home/johndoe/mouse_genome.fa`, or a relative path `../johndoe/mouse_genome.fa`.
+
+If you are ever in doubt, use the absolute path (start the path from the root).
+
+::: key-points
 <h2><i class="fas fa-thumbtack"></i> Key points</h2>
 
 There are several best practices for choosing good file and directory names. 
 
 1.  Everthing in Linux is **case sensitive**. If in doubt, stick to **lower case**. 
 \
-The filename `myfile` is **not** the same as `MyFile`, `Myfile`, or `myFile`. This also is the case of any commands we work with. 
-1. File and directory names should **only contain letters, numbers, hyphens, underscores** and **full stops**
-1. File and directory names should **not contain any spaces**
+The filename `myfile` is **not** the same as `MyFile`, `Myfile`, or `myFile`. This is also the case for any commands we work with. 
+2. File and directory names should **only contain letters, numbers, hyphens, underscores** and **full stops**
+3. File and directory names should **not contain any spaces**
 
-In contrast to graphical environments, the command line interface can become cumbersome whenever our file or directory names contain spaces of special characters. For example, the shell will consider `my file` to be two files, i.e. "my" and "file". If you have files containing spaces or specifical characters and you want to use them within Linux, you will need to enclose the full filename in quotation marks or you will need to escape spaces and special characters with a backslash. This makes sure that the shell understands it is part of the filename:
+In contrast to graphical environments, the command line interface can become cumbersome whenever our file or directory names contain spaces or special characters. For example, the shell will consider `my file` to be two files, i.e. "my" and "file". If you have files containing spaces or special characters and you want to use them within Linux, you will need to enclose the full filename in quotation marks or you will need to escape spaces and special characters with a backslash. This makes sure that the shell understands it is part of the filename:
 `"my file"` or `my\ file`
 
-To make our live easier, it is best to avoid spaces and unusual characters all together. 
+To make our life easier, it is best to avoid spaces and unusual characters all together. 
 :::
-\
 
 Whenever we first start a shell on a Linux system, your **working** or **current directory** will be your **home directory**. On most Linux systems your home directory will be called /home/username.
 
-When we forget to reference to full path, Linux will look for the file in the current working directory. If we ever want to check what the current working directory is, we can use the command pwd.
+Unless we reference the path, Linux will look for a file in the current working directory. If we ever want to check what the current working directory is, we can use the command `pwd` which stands for present working directory.
 
 ``` bash
 pwd
 ```
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 1:</h2>
 
 What is your current working directory?
 
@@ -78,23 +83,23 @@ Run `pwd`, and look at which directory you are in. Check if your username is you
 
 ## Files and Folders
 
-We are going to play with files and directories and take a look at how to browse them and refer to them. To look at which files and subdirectories we have within our folder, we can use the list(ls) command.
+We are going to play with files and directories and take a look at how to browse them and refer to them. To look at which files and subdirectories we have within our folder, we can use the `ls` (list) command.
+
 ``` bash
 ls
 ```
 
-It might be that there are currently no files within your directory, so just to have some files to play with, we will copy them from a central location on the DRP Bioinformatics server. For this we will use the copy(cp) command. 
+It might be that there are currently no files within your directory. Just to have some files to play with, we will copy them from a central location on the DRP-HCB Bioinformatics server. For this we will use the `cp` (copy) command. 
 
 ``` bash
-cp -R /library/training/Intro_to_Linux ./
+cp -r /library/training/Intro_to_Linux ./
 ```
 
-**NOTE:** if you are working from your own server of system, download the data as followed and unpack it. You do NOT need to run the following if you are working on the DRP Bioinformatics server. Don't worry about the messages you get on screen, we will talk about these later on.
+**NOTE:** if you are working from your own server or system, download the data as followed and unpack it. You do NOT need to run the following if you are working on the DRP-HCB Bioinformatics server. Don't worry about the messages you get on screen, we will talk about these later on.
 
 ``` bash
 wget https://bifx-core3.bio.ed.ac.uk/~hdeweer/Intro_to_Linux.tar.gz
 tar -xzvf Intro_to_Linux.tar.gz
-
 ```
 
 If we take a look again at what is in our folders, we will now see that a folder has been added called Intro_to_Linux. 
@@ -103,45 +108,45 @@ If we take a look again at what is in our folders, we will now see that a folder
 ls
 ```
 
-If we want to know what is inside the folder, we can use ls again and use an ***argument*** to specify the folder that we want to explore. 
+If we want to know what is inside the folder, we can use `ls` again and use an ***argument*** to specify the folder that we want to explore.
 
 ``` bash
 ls Intro_to_Linux
 ```
 
-The folder is in our home, which means the ls command has run in the current location. We can use full paths as well. \
+The folder is in our home directory, which means the `ls` command has run in the current location. We can use absolute paths as well. \
 *Replace \<UUN\> by your own UUN or username.*
 
 ``` bash
 ls /home/<UUN>/Intro_to_Linux
 ```
 
-There is another way to reference folder within our how if you remember. We can use the ~ to reference our home. 
+We can also use the `~` shortcut to reference our home directory. 
 
 ``` bash
 ls ~/Intro_to_Linux
 ```
 
 The last 3 commands all have the same results, which should show us the content of the folder Intro_to_Linux. 
-We will keep practicing throughout the day. \
-\
+
 As mentioned before, Linux has difficulties with spaces in names. There is one directory in our Intro_to_Linux directory that contains spaces. When Linux reports files or directories that contain special characters, it will put quotes around the name to indicate there is something about the name which is outside the general rules. Before we get into how to deal with files and directories with spaces, lets look at how to navigate the system. 
 
 ## Navigaton
 
-We aren't limited to staying and working from one directory. To move from one to another directory, use the command `cd` and add as an ***argument*** the folder that you want to navigate to. 
+We aren't limited to staying and working in one directory. To move between directories, use the `cd` (change directory) command and add the folder that you want to navigate to as an ***argument***.
 
 ``` bash
 cd Intro_to_Linux
 ```
 
-If you take a look at the actual prompt, this has now changed from \
-`<UUN>@bifx-core1:~$` to `<UUN>@bifx-core1:~/Intro_to_Linux$` 
+If you take a look at the actual prompt, this has now changed to reflect your current location:
+
+`<UUN>@bifx-core1:~$` to `<UUN>@bifx-core1:~/Intro_to_Linux$`
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 2:</h2>
 
-Navigate back to the parent directory of this folder. Confirm which folder you are in is your home folder
+Navigate back to the parent directory of this folder. Confirm the folder you are in is your home folder.
 
 <details>
 
@@ -150,22 +155,28 @@ Navigate back to the parent directory of this folder. Confirm which folder you a
 ::: solution
 <h2><i class="far fa-eye"></i> Solution:</h2>
 
-Remember the different special character meanings in the table above. Using `..` we can navigate to the parent directory. To check which folder we are currently in is we can again use `pwd`.
+Remember the different special character meanings in the table above. Using `..` we can navigate to the parent directory. We can use `pwd` to check which folder we are currently in.
 
 ``` bash
 cd ..
 pwd
 ```
 
-If you used a different method to get back to your home folder, that is amazing, there are multiple ways to the same folder.
+If you used a different method to get back to your home folder, that is amazing, there are multiple ways to get back to your home folder e.g.
+
+``` bash
+cd ~
+```
+``` bash
+cd /home/UUN
+```
 
 :::
 
 </details>
 ::::
-\
 
-Using the `..` we can go to the parent directory of the current directory. We can use multiple times to go back up multiple times.
+Using `..` we can go to the parent directory of the current directory. We can use this multiple times to go up several levels.
 
 ``` bash
 cd ../..
@@ -175,7 +186,7 @@ pwd
 Notice that when we ask for the `pwd` we just get a `/`. This means we are now be in the root directory and have therefore gone up two levels.
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 3:</h2>
 
 Navigate back to the Intro_to_Linux folder.
 
@@ -196,10 +207,8 @@ cd ~/Intro_to_Linux
 </details>
 ::::
 
-\
-
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 4:</h2>
 
 Navigate into the Intro_to_Linux/genomes/human folder.
 
@@ -220,8 +229,7 @@ cd genomes/human
 </details>
 ::::
 
-\
-Because we are already in the Intro_to_Linux folder, we can create a relative path from our current folder into the folder we actually want to be in. It is important to remember that relative paths change whenever our current working directory changes or the user that is running the command. Absolute paths will always be the same. But what happens if we try to navigate to a folder that exists but is not in the current directory?
+Because we are already in the Intro_to_Linux folder, we can create a relative path from our current folder into the folder we actually want to be in. It is important to remember that relative paths change whenever our current working directory changes. Absolute paths will always be the same. But what happens if we try to navigate to a folder that exists but is not in the current directory?
 
 ``` bash
 cd mouse
@@ -230,7 +238,7 @@ cd mouse
 The computer tells us that the directory does not exists. 
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 5:</h2>
 
 Navigate to the Intro_to_Linux/genomes/mouse folder using a relative path.
 
@@ -239,7 +247,7 @@ Navigate to the Intro_to_Linux/genomes/mouse folder using a relative path.
 ::: solution
 <h2><i class="far fa-eye"></i> Solution:</h2>
 
-If we want to navigate to the mouse folder using relative path from our current working directory, we need to know where we are (we can always double check this is `pwd`). Knowing that we are in the Intro_to_Linux/genomes/human folder and wanting to go to the Intro_to_Linux/genomes/mouse folder, we can use the `..` character to go up a level.
+If we want to navigate to the mouse folder using a relative path from our current working directory, we need to know where we are (we can always double check this is `pwd`). Knowing that we are in the Intro_to_Linux/genomes/human folder and wanting to go to the Intro_to_Linux/genomes/mouse folder, we can use the `..` character to go up a level.
 
 ``` bash
 cd ../mouse
@@ -247,7 +255,6 @@ cd ../mouse
 :::
 </details>
 ::::
-\
 
 We know how to navigate normal directories, but what about the strange one we saw previously with the spaces in it. Lets go back to the Intro_to_Linux folder first. 
 
@@ -261,17 +268,17 @@ Within this folder there is a folder named "dir with spaces". If we want to know
 ls dir with spaces
 ```
 
-Basically, Linux thinks we want to know what is inside 3 different folders: dir, with, and spaces. These all do not exist and so we get errors. When using `ls`, Linux puts quotes around the name when it reports it to us, if we want to ask what is inside we can use the same system.
+Basically, Linux thinks we want to know what is inside 3 different folders: dir, with, and spaces. None of these exist and so we get errors. When using `ls`, Linux puts quotes around the name when it reports it to us, if we want to ask what is inside we can use the same system.
 
 ``` bash
 ls 'dir with spaces'
 ```
-\
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 6:</h2>
 
 What happens if we try to use `Tab` completion?
+
 <details>
 <summary>Solution</summary>
 ::: solution
@@ -286,9 +293,7 @@ ls dir\ with\ spaces/
 </details>
 ::::
 
-\
-
-To complete the command, Linux puts a `\` before the spaces. This is known as escaping characters. When we put a `\` before a special character, we tell the computer to disregard what it would normally mean. We can also use that in full paths.
+To complete the command, Linux puts a `\` before the spaces. This is known as escaping characters. When we put a `\` before a special character, we tell the computer to disregard its normal meaning. We can also use that in full paths.
 
 ``` bash
 ls ~/Intro_to_Linux/dir\ with\ spaces
@@ -298,20 +303,20 @@ It's not the nicest, but it does mean we can look at files that have special cha
 
 ## Exercises
 
-Below are a number of exercises to explore looking into folders and moving around the system. 
+Below are a number of exercises designed to explore the filesystem. 
 
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 1:</h2>
 
-Navigate back to your home directory.\
-List the content of the Intro_to_Linux directory. Do you need to use `cd` for this?
+Navigate back to your home directory. 
+List the contents of the Intro_to_Linux directory without moving into it.
 
 <details>
 <summary>Solution</summary>
 ::: solution
 <h2><i class="far fa-eye"></i> Solution:</h2>
 
-We do not have to move folders to be able to see the content of a folder. Using `ls` we can specify which folder we want to look at. 
+We do not have to move folders to be able to see the content of a folder. Using `ls` we can specify the folder we want to look at. 
 ``` bash
 cd ~
 
@@ -321,13 +326,11 @@ ls Intro_to_Linux
 </details>
 ::::
 
-\
-
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 2:</h2>
 
 Navigate to the Intro_to_Linux directory. \
-List the content of your home folder without moving directory. 
+List the contents of your home folder without moving directory. 
 
 <details>
 <summary>Solution</summary>
@@ -345,12 +348,10 @@ ls ../
 </details>
 ::::
 
-\
-
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 3:</h2>
 
-Using `--help`, learn what the option `-a` affects when running the `ls` command. 
+Using `--help`, learn how the options `-a` and `-l` affect the `ls` command. 
 
 <details>
 <summary>Solution</summary>
@@ -364,7 +365,7 @@ ls --help
 ```
 
 If we use the `-a` option when running `ls`, we do not ignore entries starting with `.`. \
-A good folder to compare this on is the home folder. 
+A good folder to try this on is the home folder. 
 
 ``` bash
 ls ~
@@ -372,17 +373,22 @@ ls ~
 ls -a ~
 ```
 
-Do you see the differences in files reported?
+Do you see the differences in files reported? Files beginning with `.` are known as hidden files. These are generally configuration files or files used by the operating system.
+
+If we use the `-l` option when running `ls`, the output is in long mode. This gives extra information about files and folders, like their size, access permissions and when they were last modified.
+
+``` bash
+ls -l ~
+```
+
 :::
 </details>
 ::::
 
-\
-
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 4:</h2>
 
-Write the **absolute** path for the genomes folder within the Intro_to_Linux folder.
+List the contents of the genomes folder within the Intro_to_Linux folder using its **absolute** path. 
 
 <details>
 <summary>Solution</summary>
@@ -399,10 +405,8 @@ ls /home/<UUN>/Intro_to_Linux/genomes
 </details>
 ::::
 
-\
-
 :::: exercise
-<h2><i class="fa fa-pencil-alt"></i> Exercise 4:</h2>
+<h2><i class="fa fa-pencil-alt"></i> Exercise 5:</h2>
 
 Write the **relative** path in two different ways from you current location for the genomes folder within the Intro_to_Linux folder.
 
@@ -411,7 +415,7 @@ Write the **relative** path in two different ways from you current location for 
 ::: solution
 <h2><i class="far fa-eye"></i> Solution:</h2>
 
-Remember that the relative path starts from a variable location. Because we should currently be in the Intro_to_Linux folder, the following should work.
+Because we should currently be in the Intro_to_Linux folder, the following should work.
 
 ``` bash
 ls ~/Intro_to_Linux/genomes
@@ -421,5 +425,3 @@ ls genomes
 :::
 </details>
 ::::
-
-\

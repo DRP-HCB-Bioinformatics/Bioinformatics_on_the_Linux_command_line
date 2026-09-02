@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro To Linux – Introduction to Linux</title>
+<title>Installing Software – Introduction to Linux</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -75,9 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_Installation.html">Managing Tools</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_Installation.html">Managing Software</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_Exploration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploring The Filesystem</span></a>
+ <span class="menu-text">Exploring the Filesystem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Combination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combining Commands</span></a>
+ <span class="menu-text">Command output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_Installation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Managing Tools</span></a>
+ <span class="menu-text">Managing Software</span></a>
   </div>
 </li>
     </ul>
@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#managing-tools-with-conda" id="toc-managing-tools-with-conda" class="nav-link active" data-scroll-target="#managing-tools-with-conda">Managing Tools with Conda</a></li>
+  <li><a href="#managing-software-with-conda" id="toc-managing-software-with-conda" class="nav-link active" data-scroll-target="#managing-software-with-conda">Managing Software with Conda</a></li>
   </ul>
 </nav>
     </div>
@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro To Linux</h1>
+<h1 class="title">Installing Software</h1>
 </div>
 
 
@@ -241,8 +241,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
-<section id="managing-tools-with-conda" class="level2">
-<h2 class="anchored" data-anchor-id="managing-tools-with-conda">Managing Tools with Conda</h2>
+<section id="managing-software-with-conda" class="level2">
+<h2 class="anchored" data-anchor-id="managing-software-with-conda">Managing Software with Conda</h2>
 <p>One of the essential things in bioinformatics is the ability to install tools. On the server, often installation is limited to admins only. Sometimes this can take a long time or when testing new tools, we don’t want to disturb the admins. Thankfully, there is a solution to be able to easily install tools in your home. Conda and mamba are two managers that are essential to get to know, both are part of miniforge.</p>
 <p>Conda and mamba are often used to install tools within something called environments. This means that multiple tools can be installed within your home folder without interfering with other tools. Tools in bioinformatics have very different requirements which will clash, using environments we can still install multiple tools on the same machine with ease. Below is a short guide on how to install miniforge, create an environment and install tools.<br>
 <br>

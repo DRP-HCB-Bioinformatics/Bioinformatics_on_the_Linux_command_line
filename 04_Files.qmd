@@ -1,5 +1,5 @@
 ---
-title: "Intro To Linux"
+title: "Working with Files"
 format: html
 ---
 
@@ -9,26 +9,26 @@ format: html
 
 ## Viewing
 
-So far, we have only worked with empty files and haven't looked at the content of files. There are several core ways to look at content of a file. First, lets move into the folder which contains a number of files to take a look at. 
+So far, we have only worked with empty files and haven't looked at the content of files. There are several core ways to look at the content of a file. First, lets move into the folder below. 
 
 ``` bash
 cd ~/Intro_to_Linux/yeast_files/
 ```
 
-The first file we will take a look at is a **BED** files. This format contains information on genes located on a reference genome. Each line represents a gene. We will not focus on what the file contains too much, the main thing we need to know is that this a standard text file. There are several ways to look at the content of text files. The first is `head`, which will print the first few lines of the file to the terminal. 
+The first file we will take a look at is a **BED** file. This file contains information on genes located on a reference genome, with each line representing a unique gene. This is a standard text file format used in bioinformatics. There are several ways to look at the content of text files. The first is `head`, which will print the first few lines of the file to the terminal. 
 
 ``` bash
 head yeast_genes.bed
 ```
 
-Similarly to looking at the start of the file, there is a command for looking at the end of a file, the command `tail` will return the last few lines of the file.
+Similarl to looking at the start of the file, there is a command for looking at the end of a file, the command `tail` will return the last few lines of the file.
 
 
 ``` bash
 tail yeast_genes.bed
 ```
 
-Both of these can be very useful to be able to peek at files, especially when they are really large files. To look at the full file, the `cat` command can be used to print the whole file to the terminal. 
+Both of these can be very useful to be able to peek at files, especially when they are really large. To look at the full file, the `cat` command can be used to print the whole file to the terminal. 
 
 ``` bash
 cat yeast_genes.bed
@@ -43,7 +43,7 @@ less yeast_genes.bed
 You can scroll through the BED file one line at a time using the [Down Arrow] and the [Up Arrow] keys. You can also use the [Page Down] or [Space] and [Page Up] or [B] keys to scroll through the file one page at a time. To access the help, use the [H] key and finally to exit the file, use the [Q] key. 
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 1:</h2>
 
 Take a look at the `--help` for `head`. Print the first 5 lines of the BED file. 
 
@@ -60,7 +60,7 @@ First, lets look at the help for `head`.
 head --help
 ```
 
-From the results, we can see that `-n` can be used to print a specific number of lines
+From the results, we can see that `-n` can be used to print a specific number of lines.
 
 ``` bash
 head -n 5 yeast_genes.bed
@@ -70,7 +70,6 @@ head -n 5 yeast_genes.bed
 
 </details>
 ::::
-\
 
 Another very useful command is `wc` (word count). This command will report the number of lines, words and bytes within the file. 
 
@@ -78,7 +77,7 @@ Another very useful command is `wc` (word count). This command will report the n
 wc yeast_genes.bed
 ```
 
-Often it will be used to look at the number of lines within the file, to only get the number of lines within the file, add the `-l` option. 
+Often it will be used to look at the number of lines within the file. To only get the line count, add the `-l` option. 
 
 ``` bash
 wc -l yeast_genes.bed
@@ -92,22 +91,21 @@ In many cases, looking at the full file might not be useful. A way to search for
 grep "YAL040" yeast_genes.bed
 ```
 
-
-:::: key-points
+::: key-points
 <h2><i class="fas fa-thumbtack"></i> Key points</h2>
 
 The `grep` command has a lot of different options, an overview of the most important options can be found below.
 
 - `-i` will make the search case insensitive
-- `-v` will report all lines that do not match the searched term
-- `-c` will count the lines
+- `-v` will report all lines that do **not** match the searched term
+- `-c` will count the lines with a match
 
-There is also the option to use regular expressions within `grep`. If you have never heard of regular expressions, these are expressions that will help search for patterns instead of fixed text. Some characters can be used to search for patterns. 
+There is also the option to use [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) within `grep`. If you have never heard of regular expressions, these are expressions that will help search for patterns instead of fixed text. Some characters can be used to search for patterns. 
 
 - `^` represents the start of a line
 - `$` represents the end of a line
 
-If we want to use complex regular expressions, options `-E` and `-P` can be used to be able use more complex regular expressions. [Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) in themselves are very useful for pattern finding, we will not go into them within this course, but the most important characters that will work with options `-E` and `-P` are shown below.
+More complex regular expressions can be used in grep with the options `-E` and `-P`.
 
 - `\t` represents a `tab`
 - `\n` represents an `enter` (or new line)
@@ -115,25 +113,23 @@ If we want to use complex regular expressions, options `-E` and `-P` can be used
 - `*` represents zero or more occurrences of the character before the `*`
 - `+` represents one or more occurrences of the character before the `+`
 
-
 :::
-\
 
 ## Binary files
 
-Binary files are non human readable files. These files are specifically for computers to read. This includes zip files. Generally they are meant to be compressed to take up less space. Amazing, because in bioinformatics many files are big. In the yeast folder, there is an example of a compressed file. The file is gzipped, which is a different form of zip file. **FASTQ** files are commonly gzipped. These files contain DNA sequence information from sequencing platforms, the files contain sequence headers, sequences and quality information for sequences. We will look more in depth into them later on, but for now we will focus on compression. 
+Binary files are non human readable files. These files are specifically for computers to read. This includes zip files. Generally, they are compressed to take up less space, which is great for  large bioinformatics files. In the yeast folder, there is an example of a compressed file. The file is gzipped, which is a different form of zip file. **FASTQ** files are commonly gzipped. These files contain DNA sequence information from sequencing platforms. The files contain headers, sequences and quality information for each sequencing read. We will look more in depth into them later on, but for now we will focus on compression. 
 
 ``` bash
 head raw_yeast_rnaseq_data.fastq.gz
 ```
 
 Clearly not human readable. Sometimes we need to get information from these files without wanting to unpack them on the server. Linux has a number of commands that will work on compressed files.
-Similar to the commands we use previously, we can use `zless`, `zcat` and `zgrep` on compressed files. 
+Similar to the commands we used previously, we can use `zless`, `zcat` and `zgrep` on compressed files. 
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 1:</h2>
 
-Extract all lines **starting** with an `@` symbol from `raw_yeast_rnaseq_data.fastq.gz`. Count the amount of lines.
+Extract all lines **starting** with an `@` symbol from `raw_yeast_rnaseq_data.fastq.gz` and count the number of lines.
 
 <details>
 
@@ -145,38 +141,38 @@ Extract all lines **starting** with an `@` symbol from `raw_yeast_rnaseq_data.fa
 First, lets get all the lines that **start** with an `@` symbol. Because this is a binary file, we need to use `zgrep`. Remember that we want lines that start with the symbol, so we need to use `^`
 
 ``` bash
-zgrep ">@" raw_yeast_rnaseq_data.fastq.gz
+zgrep "^@" raw_yeast_rnaseq_data.fastq.gz
 ```
 
 To get the count of lines that match this, we can use the `-c` option for `zgrep`.
 
 ``` bash
-zgrep -c ">@" raw_yeast_rnaseq_data.fastq.gz
+zgrep -c "^@" raw_yeast_rnaseq_data.fastq.gz
 ```
 
 :::
 
 </details>
 ::::
-\
 
 ## Zipping and Unzipping
 
-Even though compressed files use less disk space to store, in some cases we want to unpack them. There are 3 main types of compression files that need different ways of unpacking: zip, gzip and tar. 
+Even though compressed files use less disk space, in some cases we want to unpack them. There are 3 main types of compression files that need different ways of unpacking: zip, gzip and tar. 
 
-- `unzip` can unpack zipped files, `zip` can create zips. Zips can contains single files or complete folders
-- `gunzip` can unpack gzipped files and `gzip` created gzipped files. Generally gzip is used for single files. 
+- `unzip` can unpack zipped files, `zip` can create zips. Zips can contains single files or complete folders.
+- `gunzip` can unpack gzipped files and `gzip` created gzipped files. Generally gzip is used for single files.
 - `tar` can be used to unpack and create tar files. Tar is used for folders and often another form of compressing is used on top of it. You will often find `tar.gz` files.
 
-The two main compression types found using Linux are `gzip` and `tar`. Lets look at an example for both. 
+The two main compression types found using Linux are `gzip` and `tar`. Lets look at an example for both.
+
 ``` bash
 gunzip raw_yeast_rnaseq_data.fastq.gz
 ```
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 2:</h2>
 
-Check if the file is now unpacked. Confirmed by printing the first 20 lines of the file. 
+Check if the file is now unpacked by printing the first 20 lines of the file. 
 
 <details>
 
@@ -195,9 +191,8 @@ head -n 20 raw_yeast_rnaseq_data.fastq
 
 </details>
 ::::
-\
 
-To pack the file back up, the command `gzip` is used. 
+To gzip the file again, the command `gzip` is used. 
 
 ``` bash
 gzip raw_yeast_rnaseq_data.fastq
@@ -209,7 +204,7 @@ ls
 ```
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 3:</h2>
 
 Navigate back to the Intro_to_Linux folder, what is the name of the file which ends in `tar.gz`.
 
@@ -234,9 +229,15 @@ There is a file in the folder named `tar-latest.tar.gz`.
 
 </details>
 ::::
-\
 
-To unpack the file, we can use `tar`. Several options are needed to unpack the file. In the `tar` command to unpack, `-x` need to be add to specify that the files need to be extracted, `-`v means that the command will report what it is doing (verbose), `-a` means it automatically handles everything that is needed for the decompression, and the `-f` (which need to be at the end) specifies which file to unpack. As you can see below, we can add all the options together into a single combination for the `tar` command. The command is the following:
+To unpack the file, we can use `tar`. Several options are needed to unpack the file. 
+
+- `-x` specifies that files need to be extracted.
+- `-v` reports what the command is doing (verbose).
+- `-a` automatically handles decompression (gunzip in this case)
+- `-f` (which needs to be at the end) specifies the tar file to unpack. 
+
+As you can see below, we can add all the options together into a single combination for the `tar` command. The command is the following:
 
 ``` bash
 tar -xvaf tar-latest.tar.gz
@@ -247,6 +248,4 @@ This will take a couple of minutes, if it is confusing to add options together, 
 tar -x -v -a -f tar-latest.tar.gz
 ```
 
-A list of files comes past as the file is unpacked. With `ls` we can double check that a folder named `tar-1.35` has been created within the current folder. 
-
-
+As the file is unpacked, a list of files and folders is written to the terminal. We can double check that a folder named `tar-1.35` has been created within the current folder using `ls`. 

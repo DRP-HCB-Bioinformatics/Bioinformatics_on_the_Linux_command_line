@@ -1,5 +1,5 @@
 ---
-title: "Intro To Linux"
+title: "Creating Files"
 format: html
 ---
 
@@ -9,28 +9,26 @@ format: html
 
 ## Make, Move, Delete
 
-To be able to work within Linux, we need to know how we can make, move and delete folder and files. To start, lets make sure that we start in the `Intro_to_Linux` folder.
+To be able to work within Linux, we need to learn to make, move and delete folders and files. To start, lets make sure that we start in the `Intro_to_Linux` folder.
 
 ``` bash
 cd ~/Intro_to_Linux/
 ```
 
-First, we will take a look at creating directories. For this we can use the command `mkdir` (make directory). Lets start with creating two folders, temp1 and temp2
+First, we will take a look at creating directories. For this we can use the `mkdir` (make directory) command. Let's start by creating two folders, temp1 and temp2
 
 ``` bash
 mkdir temp1 temp2
 ```
 
-As you can see, we create two folders in one go. The `mkdir` command can take multiple names and will create all the names separated by a space in the current directory, unless specifically told to make it somewhere else. Lets check if the directories have indeed been created.
+As you can see, we can create two folders in one go. The `mkdir` command can take multiple names and will create all the names separated by a space in the current directory, unless specifically told to make it somewhere else. Lets check if the directories have indeed been created.
 
 ``` bash
 ls
 ```
 
-\
-
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 1:</h2>
 
 Move into the temp1 directory.
 
@@ -50,7 +48,7 @@ cd temp1
 
 </details>
 ::::
-\
+
 There are several ways to create files. The quickest way is to use `touch`, which will create empty files.
 
 ``` bash
@@ -63,16 +61,14 @@ Again, multiple files can be created at the same time if we provide multiple nam
 ls
 ```
 
-Now that there are files created within the folder, the files can be copied to other directories using the `cp` (copy) command.
+Files can be copied to other directories using the `cp` (copy) command.
 
 ``` bash
 cp myfile1.txt ~/Intro_to_Linux/temp2/
 ```
 
-\
-
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 2:</h2>
 
 Check if there is a file named `myfile1.txt` in the `temp2` folder
 
@@ -93,21 +89,20 @@ ls ../temp2
 </details>
 ::::
 
-\
 Because the file was copied, the current directory should still contain the file as well.
 
 ``` bash
 ls 
 ```
 
-Files can be moved using the `mv` (move) command. Similar to the copy command it takes the file which is to be move and location to which it should be moved.
+Files can be moved using the `mv` (move) command. Similar to the copy command it takes the file which is to be moved and the location to which it should be moved.
 
 ``` bash
 mv myfile2.txt ~/Intro_to_Linux/temp2/
 ```
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 3:</h2>
 
 Check if there is a file named `myfile2.txt` in the `temp1` and in the `temp2` folder
 
@@ -130,8 +125,8 @@ ls ../temp2
 </details>
 ::::
 
-\
-Because the file was moved, it should no longer be in `temp1` but only in the `temp2` folder.\
+Because the file was moved, it should no longer be in `temp1` but only in the `temp2` folder.
+
 Move can also be used to rename files, for that we give it the current name and the name it should be renamed to.
 
 ``` bash
@@ -143,6 +138,8 @@ And of course double check if the file has correctly been renamed.
 ``` bash
 ls
 ```
+
+**NOTE:** Use the `mv` command with caution. Linux does not check if the filename you are moving to already exists. Any existing files will be overwritten. The `-i` option to `mv` provides an interactive version of move which asks before overwriting existing files.
 
 Go back to the Intro_to_Linux directory:
 
@@ -171,14 +168,13 @@ rm -r temp1
 ::: key-points
 <h2><i class="fas fa-thumbtack"></i> Key points</h2>
 
-Linux doesn't always reply to commands. For Linux, no news is good news. If we do not get any reply from Linux after running a command, this means that the previous command has been done and there is nothing to report. If we want to make sure commands are run correctly, we need to do checks ourselves.\
+Linux doesn't always reply to commands. For Linux, no news is good news. If we do not get any reply from Linux after running a command, this means that the previous command has been done and there is nothing to report. If we want to make sure commands are run correctly, we need to do checks ourselves.
+
 In some cases, the option `-v` can be added to commands to have a verbose output which reports what the command is doing.
 :::
 
-\
-
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 4:</h2>
 
 Remove folder `temp2`. Make sure to use the `-v` option while removing the folder.
 
@@ -199,28 +195,26 @@ rm -r -v temp2
 </details>
 ::::
 
-\
-
-::: exercise
+::: discussion
 <h2><i class="fas fa-exclamation"></i> Warning</h2>
 
-Whenever you remove or overwrite files from the command line, they are gone. Forever. There is no Trash or Recycle Bin like within a graphical environment. There is no easy way to get them back!\
-Some servers will have daily backups, however this is not something to depend on. Make sure you have backups of important data.\
+Whenever you remove or overwrite files from the command line, they are gone. Forever. There is no Trash or Recycle Bin like within a graphical environment. There is no easy way to get them back!
 
-One tip would be to always do an `ls` of the folder you want to remove before actually deleting it. This way you can make sure you are removing the right folder and are aware of what is inside the folder. You can also use the `-i` interactive option, this will ask you to confirm everything it removes. Be very aware of spaces in your command.
+Some servers have daily backups, however this is not something to depend on. Make sure you have backups of important data.
+
+One tip is to always do an `ls` of the folder you want to remove before actually deleting it. This way you can make sure you are removing the correct folder and are aware of what is inside the folder. You can also use the `-i` interactive option, this will ask you to confirm everything it removes. Be very aware of typos and spaces in your commands!
 
 ``` bash
-rm -r ~/Project /temp2
+## EXAMPLE - DO NOT RUN
+#rm -r ~/Project /temp2
 ```
 
-Instead of removing the `~/Project/temp2` folder, the command above removes the full `Project` folder and the root `temp2` folder, because the space in the directory name. This removes much more than we would want.
+Instead of removing `~/Project/temp2` folder, the command above will attempt to remove the full `Project` folder and `temp2` in the root folder, because of the space in the directory name. This could be catastrophic.
 :::
-
-\
 
 ## Permissions
 
-In this course so far, we have worked within our home directories on a server. By default, this folder is owned by you. When we want to share files and folders with other users, we can change **ownership** of files or change **permissions** to allow others to access.\
+So far, we have worked within our home directories on the server. By default, this folder is owned by you. When we want to share files and folders with other users, we can change **ownership** of files or change **permissions** to allow others to access.
 
 Each file (and directory) has three sets of permissions:
 
@@ -232,9 +226,9 @@ Each file and directory also has three basic permission settings:
 
 - **read (r)**: Ability to read the content of a file or directory.
 - **write (w)**: Ability to write or edit a file or directory.
-- **execute (x)**: Ability to run the file as a program. For directory this is the ability to go into the directory and access files inside.
+- **execute (x)**: Ability to run the file as a program. For a directory, this is the ability to go into the directory and access files inside.
 
-For a directory with only **execute** permissions, you can read the contents but only if you already know the names of the files. You cannot list the files without the **read** permission on a directory. This is rarely useful, generally on any directory you want to set **read** and **execute** permissions both on, or both off.\
+For a directory with only **execute** permissions, you can read the contents but only if you already know the names of the files. You cannot list the files without the **read** permission on a directory. This is rarely useful, generally on any directory you want to set **read** and **execute** permissions both on, or both off.
 
 To take a look at this, lets create a file again.
 
@@ -242,7 +236,7 @@ To take a look at this, lets create a file again.
 touch myfile.txt
 ```
 
-To get information on which permissions are set to directories and files, we can use the `ls` command again. To list permissions, the option `-l` needs to be used.
+To get information on permissions, we can use the `ls` command again. To list permissions, the option `-l` needs to be used.
 
 ``` bash
 ls -l myfile.txt
@@ -250,15 +244,15 @@ ls -l myfile.txt
 
 The first column (-rw-r--r--) contains the permissions.
 
-- The `-` at the start indicates that this is a file. If it was a **d**, it would be a directory. If it was an **l** it would be a link (we will talk about links a later on).
-- The next 3 characters are **user** permissions. `rw-` means that the user (aka you) can read the file (r), can write to and edit the file (w), but you cannot execute the file (-).
+- The `-` at the start indicates that this is a file. If it was a **d**, it would be a directory. If it was an **l** it would be a link (we will talk about links later on).
+- The next 3 characters are **user** permissions. `rw-` means that the user can read the file (r), can write to and edit the file (w), but cannot execute the file (-).
 - The next 3 letters are **group** permissions. `r--` means that the group can read the file but cannot edit or execute the file.
 - The last 3 characters are **others** permissions. Again we see `r--`, which means others can see the file but make no changes or execute the file.
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 5:</h2>
 
-Look at the details for all the files in the Intro_to_Linux folder. Identify different permissions over the different files.
+Look at the permissions for all the files in the Intro_to_Linux folder. Identify different permissions over the different files.
 
 <details>
 
@@ -275,13 +269,12 @@ ls -l
 :::
 </details>
 ::::
-\
 
-To change permissions of files, the command `chmod` (change mode) can be used. 
+To change permissions of files, the `chmod` (change mode) command can be used. 
 
 - The `chmod` command uses the letters `u`, `g` and `o` to represent user, group and others.
 - To change permissions for everyone you can use `a` for all.
-- The `chmod` command uses the letters `r`, `w` and `x` to represent read, write and execute. 
+- The `chmod` command uses the letters `r`, `w` and `x` to represent read, write and execute.
 
 For example, to stop other users on the system from accessing `myfile.txt`, we can remove the permissions for group and others:
 
@@ -295,7 +288,7 @@ ls -l myfile.txt
 
 If we want to add permissions, use a `+` instead of a `-`.\
 
-Setting permissions recursively (directory and all files inside of it) is possible, for this the `-R` option can be used. The command below is a very handy command. It means "make my current directory and everything inside of it readable and writable by me". Note the uppercase `X` properly sets the directory permissions, remembering that we want both **read** and **execute** set on directories. If we used a lowercase `x` it would also make all the files executable, which we probably don't wait. 
+Setting permissions recursively (directory and all files inside of it) is possible, for this the `-R` option can be used. The command below is a very handy command. It means "make my current directory and everything inside of it readable and writable by me". Note the uppercase `X` properly sets the directory permissions, remembering that we want both **read** and **execute** set on directories. If we used a lowercase `x` it would also make all the files executable, which we probably don't want. 
 
 ``` bash
 chmod -R u+rwX .
@@ -305,16 +298,15 @@ File permissions can be confusing, here is a useful [tool](https://chmod-calcula
 
 ## Symbolic links
 
-Sometimes, we do not want to duplicate files but do want to easily access them within a directory. Symbolic links, also known as soft link or symlink, are pseudo-file that link to another file or directory (similar to a shortcut in Windows).
-In bioinformatics, these links are often used to reduce duplication of raw data files or reference genomes. \
+Sometimes, we want to easily access a file in another directory without copying it into our working directory. Symbolic links, also known as soft links or symlinks, are pseudo-files that link to another file or directory (similar to a shortcut in Windows). In bioinformatics, these links are often used to reduce duplication of large data files or reference genomes.
 
-Symbolic links are created using the `ln` command with option `-s`. The `-r` option makes the command behave more nicely, similar to the `cp` or `mv` command. 
+Symbolic links are created using the `ln` (link) command with option `-s`. The `-r` option makes the command behave more nicely, similar to the `cp` or `mv` command. 
 
 ``` bash
 ln -sr ~/Intro_to_Linux/genomes/human/hg38/genome.fa ./
 ```
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 6:</h2>
 
 Check if the link is created and what the permissions are for the link.
 <details>
@@ -332,13 +324,12 @@ ls -l
 :::
 </details>
 ::::
-\
 
-Deleting symbolic links does not remove the original file. If, however, the target file to which the link is point is moved or deleted, the link will stop working. 
+Deleting symbolic links does not remove the original file. If, however, the target file to which the link points is moved or deleted, the link will stop working. 
 
 ## Exercises
 
-Below are a number of exercises exploring files and folder creation and permissions. 
+Below are a number of exercises exploring file and folder creation and permissions. 
 
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 1:</h2>
@@ -350,7 +341,7 @@ Create a directory named `directory1` in the Intro_to_Linux directory
 ::: solution
 <h2><i class="far fa-eye"></i> Solution:</h2>
 
-Move into the Intro_to_Linux directory and then use the `mkdir` to create a directory.
+Move into the Intro_to_Linux directory and then use `mkdir` to create a directory.
 
 ``` bash
 cd ~/Intro_to_Linux
@@ -360,7 +351,6 @@ mkdir directory1
 :::
 </details>
 ::::
-\
 
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 2:</h2>
@@ -372,7 +362,7 @@ Within `directory1` create two subdirectories named `subdirectory1` and `subdire
 ::: solution
 <h2><i class="far fa-eye"></i> Solution:</h2>
 
-Move into the directory and then use the `mkdir` command to create two directories (which can be done within 1 command).
+Move into the directory and then use the `mkdir` command to create two directories (which can be done with a single command).
 
 ``` bash
 cd directory1
@@ -382,7 +372,6 @@ mkdir subdirectory1 subdirectory2
 :::
 </details>
 ::::
-\
 
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 3:</h2>
@@ -394,7 +383,7 @@ Create two empty files in subdirectory1, named `file1.txt` and `file2.txt`
 ::: solution
 <h2><i class="far fa-eye"></i> Solution:</h2>
 
-Move into the subdirectory and then use `touch` to create two files (which can be done within 1 command).
+Move into the subdirectory and then use `touch` to create two files (which can be done with a single command).
 
 ``` bash
 cd subdirectory1
@@ -405,7 +394,6 @@ touch file1.txt file2.txt
 :::
 </details>
 ::::
-\
 
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 4:</h2>
@@ -417,24 +405,22 @@ We haven't looked at this command, but take a look at `tree` (remember `-h` for 
 ::: solution
 <h2><i class="far fa-eye"></i> Solution:</h2>
 
-Using `-h` we get more information on how to use it. We can give the command a link to which folder we want to run it on.
+Using `-h` we get more information on how to use the tree command. Tree shows us the full structure of folders and files that exist within a specific directory.
 
 ``` bash
 tree -h
 
-tree ~/Intro_to_Linux/directory1
+tree ~/Intro_to_Linux
 ```
 
-Tree shows us the folders and file that exists within a specific directory. This can be helpful to see the setup of our folders. 
 :::
 </details>
 ::::
-\
 
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 5:</h2>
 
-View the permissions of `file1.txt` and `file2.txt`. Change it so that others do not have any access to the files. 
+View the permissions of `file1.txt` and `file2.txt`. Change it so that others do not have any access to these files. 
 
 <details>
 <summary>Solution</summary>
@@ -452,7 +438,6 @@ chmod o-rwx file1.txt file2.txt
 :::
 </details>
 ::::
-\
 
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 6:</h2>
@@ -460,7 +445,6 @@ chmod o-rwx file1.txt file2.txt
 Copy `file1.txt` and `file2.txt` to `subdirectory2`. Check if the files were both copied and permissions are the same as the original files.
 
 **Hint** - to copy multiple files we can use a star (*) which is a wildcard. Basically the star means all files and directories at a location. We will look into this wildcard more later on.
-
 
 <details>
 <summary>Solution</summary>
@@ -490,12 +474,11 @@ ls -l ~/Intro_to_Linux/directory1/subdirectory2/
 :::
 </details>
 ::::
-\
 
 :::: exercise
 <h2><i class="fa fa-pencil-alt"></i> Exercise 7:</h2>
 
-Navigate to the Intro_to_Linux folder. Delete `subdirectory1` and all the files within it. Use `tree` to look at what `directory1` looks like after the deletion and confirm if the folder has been deleted. 
+Navigate to the Intro_to_Linux folder. Delete `subdirectory1` and all the files within it. Use `tree` to confirm if the folder has been deleted. 
 
 <details>
 <summary>Solution</summary>
@@ -523,4 +506,3 @@ tree directory1
 :::
 </details>
 ::::
-\

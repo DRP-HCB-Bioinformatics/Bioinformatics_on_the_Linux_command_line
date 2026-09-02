@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro To Linux – Introduction to Linux</title>
+<title>Creating Files – Introduction to Linux</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -75,9 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_Exploration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploring The Filesystem</span></a>
+ <span class="menu-text">Exploring the Filesystem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Combination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combining Commands</span></a>
+ <span class="menu-text">Command output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_Installation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Managing Tools</span></a>
+ <span class="menu-text">Managing Software</span></a>
   </div>
 </li>
     </ul>
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro To Linux</h1>
+<h1 class="title">Creating Files</h1>
 </div>
 
 
@@ -246,17 +246,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
 <section id="make-move-delete" class="level2">
 <h2 class="anchored" data-anchor-id="make-move-delete">Make, Move, Delete</h2>
-<p>To be able to work within Linux, we need to know how we can make, move and delete folder and files. To start, lets make sure that we start in the <code>Intro_to_Linux</code> folder.</p>
+<p>To be able to work within Linux, we need to learn to make, move and delete folders and files. To start, lets make sure that we start in the <code>Intro_to_Linux</code> folder.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>First, we will take a look at creating directories. For this we can use the command <code>mkdir</code> (make directory). Lets start with creating two folders, temp1 and temp2</p>
+<p>First, we will take a look at creating directories. For this we can use the <code>mkdir</code> (make directory) command. Let’s start by creating two folders, temp1 and temp2</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> temp1 temp2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>As you can see, we create two folders in one go. The <code>mkdir</code> command can take multiple names and will create all the names separated by a space in the current directory, unless specifically told to make it somewhere else. Lets check if the directories have indeed been created.</p>
+<p>As you can see, we can create two folders in one go. The <code>mkdir</code> command can take multiple names and will create all the names separated by a space in the current directory, unless specifically told to make it somewhere else. Lets check if the directories have indeed been created.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><br>
-</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 1:
 </h2>
 <p>Move into the temp1 directory.</p>
 <details>
@@ -273,18 +271,15 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-There are several ways to create files. The quickest way is to use <code>touch</code>, which will create empty files.</p>
+<p>There are several ways to create files. The quickest way is to use <code>touch</code>, which will create empty files.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> myfile1.txt myfile2.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Again, multiple files can be created at the same time if we provide multiple names separated with a space.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Now that there are files created within the folder, the files can be copied to other directories using the <code>cp</code> (copy) command.</p>
+<p>Files can be copied to other directories using the <code>cp</code> (copy) command.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> myfile1.txt ~/Intro_to_Linux/temp2/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><br>
-</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 2:
 </h2>
 <p>Check if there is a file named <code>myfile1.txt</code> in the <code>temp2</code> folder</p>
 <details>
@@ -301,14 +296,13 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-Because the file was copied, the current directory should still contain the file as well.</p>
+<p>Because the file was copied, the current directory should still contain the file as well.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Files can be moved using the <code>mv</code> (move) command. Similar to the copy command it takes the file which is to be move and location to which it should be moved.</p>
+<p>Files can be moved using the <code>mv</code> (move) command. Similar to the copy command it takes the file which is to be moved and the location to which it should be moved.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> myfile2.txt ~/Intro_to_Linux/temp2/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 3:
 </h2>
 <p>Check if there is a file named <code>myfile2.txt</code> in the <code>temp1</code> and in the <code>temp2</code> folder</p>
 <details>
@@ -327,12 +321,12 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-Because the file was moved, it should no longer be in <code>temp1</code> but only in the <code>temp2</code> folder.<br>
-Move can also be used to rename files, for that we give it the current name and the name it should be renamed to.</p>
+<p>Because the file was moved, it should no longer be in <code>temp1</code> but only in the <code>temp2</code> folder.</p>
+<p>Move can also be used to rename files, for that we give it the current name and the name it should be renamed to.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> myfile1.txt myfile1_renamed.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>And of course double check if the file has correctly been renamed.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>NOTE:</strong> Use the <code>mv</code> command with caution. Linux does not check if the filename you are moving to already exists. Any existing files will be overwritten. The <code>-i</code> option to <code>mv</code> provides an interactive version of move which asks before overwriting existing files.</p>
 <p>Go back to the Intro_to_Linux directory:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The last thing to look at in this chapter is how to remove files and folders. Both can be deleted using the <code>rm</code> command, however for folders an option needs to be added. To remove files, we can do the following.</p>
@@ -345,14 +339,12 @@ Move can also be used to rename files, for that we give it the current name and 
 <h2 class="anchored">
 <i class="fas fa-thumbtack"></i> Key points
 </h2>
-<p>Linux doesn’t always reply to commands. For Linux, no news is good news. If we do not get any reply from Linux after running a command, this means that the previous command has been done and there is nothing to report. If we want to make sure commands are run correctly, we need to do checks ourselves.<br>
-In some cases, the option <code>-v</code> can be added to commands to have a verbose output which reports what the command is doing.</p>
+<p>Linux doesn’t always reply to commands. For Linux, no news is good news. If we do not get any reply from Linux after running a command, this means that the previous command has been done and there is nothing to report. If we want to make sure commands are run correctly, we need to do checks ourselves.</p>
+<p>In some cases, the option <code>-v</code> can be added to commands to have a verbose output which reports what the command is doing.</p>
 </div>
-<p><br>
-</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 4:
 </h2>
 <p>Remove folder <code>temp2</code>. Make sure to use the <code>-v</code> option while removing the folder.</p>
 <details>
@@ -369,26 +361,21 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<div class="exercise">
+<div class="discussion">
 <h2 class="anchored">
 <i class="fas fa-exclamation"></i> Warning
 </h2>
-<p>Whenever you remove or overwrite files from the command line, they are gone. Forever. There is no Trash or Recycle Bin like within a graphical environment. There is no easy way to get them back!<br>
-Some servers will have daily backups, however this is not something to depend on. Make sure you have backups of important data.<br>
-</p>
-<p>One tip would be to always do an <code>ls</code> of the folder you want to remove before actually deleting it. This way you can make sure you are removing the right folder and are aware of what is inside the folder. You can also use the <code>-i</code> interactive option, this will ask you to confirm everything it removes. Be very aware of spaces in your command.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> ~/Project /temp2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Instead of removing the <code>~/Project/temp2</code> folder, the command above removes the full <code>Project</code> folder and the root <code>temp2</code> folder, because the space in the directory name. This removes much more than we would want.</p>
+<p>Whenever you remove or overwrite files from the command line, they are gone. Forever. There is no Trash or Recycle Bin like within a graphical environment. There is no easy way to get them back!</p>
+<p>Some servers have daily backups, however this is not something to depend on. Make sure you have backups of important data.</p>
+<p>One tip is to always do an <code>ls</code> of the folder you want to remove before actually deleting it. This way you can make sure you are removing the correct folder and are aware of what is inside the folder. You can also use the <code>-i</code> interactive option, this will ask you to confirm everything it removes. Be very aware of typos and spaces in your commands!</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">## EXAMPLE - DO NOT RUN</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#rm -r ~/Project /temp2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Instead of removing <code>~/Project/temp2</code> folder, the command above will attempt to remove the full <code>Project</code> folder and <code>temp2</code> in the root folder, because of the space in the directory name. This could be catastrophic.</p>
 </div>
-<p><br>
-</p>
 </section>
 <section id="permissions" class="level2">
 <h2 class="anchored" data-anchor-id="permissions">Permissions</h2>
-<p>In this course so far, we have worked within our home directories on a server. By default, this folder is owned by you. When we want to share files and folders with other users, we can change <strong>ownership</strong> of files or change <strong>permissions</strong> to allow others to access.<br>
-</p>
+<p>So far, we have worked within our home directories on the server. By default, this folder is owned by you. When we want to share files and folders with other users, we can change <strong>ownership</strong> of files or change <strong>permissions</strong> to allow others to access.</p>
 <p>Each file (and directory) has three sets of permissions:</p>
 <ul>
 <li><strong>user</strong>: Permissions for a user that owns the file or directory</li>
@@ -399,26 +386,25 @@ Some servers will have daily backups, however this is not something to depend on
 <ul>
 <li><strong>read (r)</strong>: Ability to read the content of a file or directory.</li>
 <li><strong>write (w)</strong>: Ability to write or edit a file or directory.</li>
-<li><strong>execute (x)</strong>: Ability to run the file as a program. For directory this is the ability to go into the directory and access files inside.</li>
+<li><strong>execute (x)</strong>: Ability to run the file as a program. For a directory, this is the ability to go into the directory and access files inside.</li>
 </ul>
-<p>For a directory with only <strong>execute</strong> permissions, you can read the contents but only if you already know the names of the files. You cannot list the files without the <strong>read</strong> permission on a directory. This is rarely useful, generally on any directory you want to set <strong>read</strong> and <strong>execute</strong> permissions both on, or both off.<br>
-</p>
+<p>For a directory with only <strong>execute</strong> permissions, you can read the contents but only if you already know the names of the files. You cannot list the files without the <strong>read</strong> permission on a directory. This is rarely useful, generally on any directory you want to set <strong>read</strong> and <strong>execute</strong> permissions both on, or both off.</p>
 <p>To take a look at this, lets create a file again.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> myfile.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To get information on which permissions are set to directories and files, we can use the <code>ls</code> command again. To list permissions, the option <code>-l</code> needs to be used.</p>
+<p>To get information on permissions, we can use the <code>ls</code> command again. To list permissions, the option <code>-l</code> needs to be used.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> myfile.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The first column (-rw-r–r–) contains the permissions.</p>
 <ul>
-<li>The <code>-</code> at the start indicates that this is a file. If it was a <strong>d</strong>, it would be a directory. If it was an <strong>l</strong> it would be a link (we will talk about links a later on).</li>
-<li>The next 3 characters are <strong>user</strong> permissions. <code>rw-</code> means that the user (aka you) can read the file (r), can write to and edit the file (w), but you cannot execute the file (-).</li>
+<li>The <code>-</code> at the start indicates that this is a file. If it was a <strong>d</strong>, it would be a directory. If it was an <strong>l</strong> it would be a link (we will talk about links later on).</li>
+<li>The next 3 characters are <strong>user</strong> permissions. <code>rw-</code> means that the user can read the file (r), can write to and edit the file (w), but cannot execute the file (-).</li>
 <li>The next 3 letters are <strong>group</strong> permissions. <code>r--</code> means that the group can read the file but cannot edit or execute the file.</li>
 <li>The last 3 characters are <strong>others</strong> permissions. Again we see <code>r--</code>, which means others can see the file but make no changes or execute the file.</li>
 </ul>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 5:
 </h2>
-<p>Look at the details for all the files in the Intro_to_Linux folder. Identify different permissions over the different files.</p>
+<p>Look at the permissions for all the files in the Intro_to_Linux folder. Identify different permissions over the different files.</p>
 <details>
 <summary>
 Solution
@@ -433,9 +419,7 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<p>To change permissions of files, the command <code>chmod</code> (change mode) can be used.</p>
+<p>To change permissions of files, the <code>chmod</code> (change mode) command can be used.</p>
 <ul>
 <li>The <code>chmod</code> command uses the letters <code>u</code>, <code>g</code> and <code>o</code> to represent user, group and others.</li>
 <li>To change permissions for everyone you can use <code>a</code> for all.</li>
@@ -449,19 +433,18 @@ Solution
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> myfile.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If we want to add permissions, use a <code>+</code> instead of a <code>-</code>.<br>
 </p>
-<p>Setting permissions recursively (directory and all files inside of it) is possible, for this the <code>-R</code> option can be used. The command below is a very handy command. It means “make my current directory and everything inside of it readable and writable by me”. Note the uppercase <code>X</code> properly sets the directory permissions, remembering that we want both <strong>read</strong> and <strong>execute</strong> set on directories. If we used a lowercase <code>x</code> it would also make all the files executable, which we probably don’t wait.</p>
+<p>Setting permissions recursively (directory and all files inside of it) is possible, for this the <code>-R</code> option can be used. The command below is a very handy command. It means “make my current directory and everything inside of it readable and writable by me”. Note the uppercase <code>X</code> properly sets the directory permissions, remembering that we want both <strong>read</strong> and <strong>execute</strong> set on directories. If we used a lowercase <code>x</code> it would also make all the files executable, which we probably don’t want.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> <span class="at">-R</span> u+rwX .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>File permissions can be confusing, here is a useful <a href="https://chmod-calculator.com/">tool</a> to help.</p>
 </section>
 <section id="symbolic-links" class="level2">
 <h2 class="anchored" data-anchor-id="symbolic-links">Symbolic links</h2>
-<p>Sometimes, we do not want to duplicate files but do want to easily access them within a directory. Symbolic links, also known as soft link or symlink, are pseudo-file that link to another file or directory (similar to a shortcut in Windows). In bioinformatics, these links are often used to reduce duplication of raw data files or reference genomes.<br>
-</p>
-<p>Symbolic links are created using the <code>ln</code> command with option <code>-s</code>. The <code>-r</code> option makes the command behave more nicely, similar to the <code>cp</code> or <code>mv</code> command.</p>
+<p>Sometimes, we want to easily access a file in another directory without copying it into our working directory. Symbolic links, also known as soft links or symlinks, are pseudo-files that link to another file or directory (similar to a shortcut in Windows). In bioinformatics, these links are often used to reduce duplication of large data files or reference genomes.</p>
+<p>Symbolic links are created using the <code>ln</code> (link) command with option <code>-s</code>. The <code>-r</code> option makes the command behave more nicely, similar to the <code>cp</code> or <code>mv</code> command.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-sr</span> ~/Intro_to_Linux/genomes/human/hg38/genome.fa ./</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 6:
 </h2>
 Check if the link is created and what the permissions are for the link.
 <details>
@@ -478,13 +461,11 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<p>Deleting symbolic links does not remove the original file. If, however, the target file to which the link is point is moved or deleted, the link will stop working.</p>
+<p>Deleting symbolic links does not remove the original file. If, however, the target file to which the link points is moved or deleted, the link will stop working.</p>
 </section>
 <section id="exercises" class="level2">
 <h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<p>Below are a number of exercises exploring files and folder creation and permissions.</p>
+<p>Below are a number of exercises exploring file and folder creation and permissions.</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 1:
@@ -499,15 +480,13 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>Move into the Intro_to_Linux directory and then use the <code>mkdir</code> to create a directory.</p>
+<p>Move into the Intro_to_Linux directory and then use <code>mkdir</code> to create a directory.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> directory1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 2:
@@ -522,15 +501,13 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>Move into the directory and then use the <code>mkdir</code> command to create two directories (which can be done within 1 command).</p>
+<p>Move into the directory and then use the <code>mkdir</code> command to create two directories (which can be done with a single command).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> directory1</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> subdirectory1 subdirectory2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 3:
@@ -545,15 +522,13 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>Move into the subdirectory and then use <code>touch</code> to create two files (which can be done within 1 command).</p>
+<p>Move into the subdirectory and then use <code>touch</code> to create two files (which can be done with a single command).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> subdirectory1</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> file1.txt file2.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 4:
@@ -568,21 +543,18 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>Using <code>-h</code> we get more information on how to use it. We can give the command a link to which folder we want to run it on.</p>
+<p>Using <code>-h</code> we get more information on how to use the tree command. Tree shows us the full structure of folders and files that exist within a specific directory.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span> <span class="at">-h</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span> ~/Intro_to_Linux/directory1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Tree shows us the folders and file that exists within a specific directory. This can be helpful to see the setup of our folders.</p>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span> ~/Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 5:
 </h2>
-<p>View the permissions of <code>file1.txt</code> and <code>file2.txt</code>. Change it so that others do not have any access to the files.</p>
+<p>View the permissions of <code>file1.txt</code> and <code>file2.txt</code>. Change it so that others do not have any access to these files.</p>
 <details>
 <summary>
 Solution
@@ -599,8 +571,6 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 6:
@@ -627,13 +597,11 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 7:
 </h2>
-<p>Navigate to the Intro_to_Linux folder. Delete <code>subdirectory1</code> and all the files within it. Use <code>tree</code> to look at what <code>directory1</code> looks like after the deletion and confirm if the folder has been deleted.</p>
+<p>Navigate to the Intro_to_Linux folder. Delete <code>subdirectory1</code> and all the files within it. Use <code>tree</code> to confirm if the folder has been deleted.</p>
 <details>
 <summary>
 Solution
@@ -652,8 +620,6 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
 
 
 </section>

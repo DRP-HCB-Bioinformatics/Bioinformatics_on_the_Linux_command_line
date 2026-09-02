@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro To Linux – Introduction to Linux</title>
+<title>Text Editors – Introduction to Linux</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -75,9 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_Exploration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploring The Filesystem</span></a>
+ <span class="menu-text">Exploring the Filesystem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Combination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combining Commands</span></a>
+ <span class="menu-text">Command output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_Installation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Managing Tools</span></a>
+ <span class="menu-text">Managing Software</span></a>
   </div>
 </li>
     </ul>
@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro To Linux</h1>
+<h1 class="title">Text Editors</h1>
 </div>
 
 
@@ -243,17 +243,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
 <section id="nano" class="level2">
 <h2 class="anchored" data-anchor-id="nano">Nano</h2>
-<p>There are several command line text editors available, today we will briefly look at nano. Just typing <code>nano</code> will open a new blank file</p>
+<p>Several command line text editors exist for creating and editing files.</p>
+<ul>
+<li>Highly customisable and extensible:
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/">emacs</a>:</li>
+<li><a href="https://www.vim.org/">vim</a>:</li>
+</ul></li>
+<li>Beginner friendly:
+<ul>
+<li><a href="https://www.nano-editor.org/">nano</a>:</li>
+</ul></li>
+</ul>
+<p>Today we will briefly look at <code>nano</code>, which is simple to use and installed on all Linux distributions. Nano is specifically designed for editing plain text files, the staple input/output format used by most command line tools.</p>
+<p>Command line text editors are not designed to take the place of feature rich graphical word processors for creating highly formatted documents (Microsoft Word, Google Docs etc). Instead, they are fast and versatile editors for command line programming.</p>
+<p>Just typing <code>nano</code> will open a new blank file.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Try typing some text into your editor, nano specific options are shown at the bottom (run by holing CTRL + your chosen option).</p>
+<p>Try typing some text into your editor. Specific options are shown at the bottom (run by holding CTRL + your chosen option).</p>
 <p>To save your file use <code>CTRL+O</code>, it will then prompt you to name your file:</p>
-<p>File Name to Write: myfile.txt</p>
-<p>You can then exit with <code>CTRL+X</code></p>
+<p><code>File Name to Write: myfile.txt</code></p>
+<p>You can then exit with <code>CTRL+X</code>.</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 1:
 </h2>
-<p>Check to see if the file has been created and what it contains</p>
+<p>Check to see if the file has been created and what it contains.</p>
 <details>
 <summary>
 Solution
@@ -268,20 +282,17 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<p>We can also open a existing file with nano;</p>
+<p>We can also open a existing file with nano.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> myfile.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If you edit this file and then try to exit without saving, it will prompt you with ‘Save modified buffer?’ Y/N before again clarifying output file name (Useful!).</p>
-<p>Earlier we created a file called my_commands.txt, open this with nano and make some annotations (generally ‘#’ are used to denote comments) and clean up the file however you like.</p>
+<p>Earlier, we created a file called my_commands.txt. Open this with nano and make some annotations (generally ‘#’ are used to denote comments) and clean up the file however you like.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> my_commands.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Here, I’ve added a comment to remind me of an option (Note, your numbers on the left of command history will differ):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="ex">2013</span>  date</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="co"># Using -u displays the date in UTC time</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">2014</span>  date <span class="at">-u</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">2015</span>  date <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You can navigate with arrow keys but the ‘Where Is’ <code>CTRL+W</code> function may be useful here.</p>
-<p>There are other more powerful command line text editors available such as vim or emacs, although these have a steep learning curve. Of course, more demanding tasks will require the use of advanced GUI based text editors or IDEs but hopefully you can see when it might be useful to be able to quickly edit files.</p>
+<p>You can navigate with the arrow keys but the ‘Where Is’ <code>CTRL+W</code> function may be useful here.</p>
 
 
 </section>

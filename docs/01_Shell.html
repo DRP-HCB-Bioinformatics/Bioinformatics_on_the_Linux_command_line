@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro To Linux – Introduction to Linux</title>
+<title>Getting started with the Shell – Introduction to Linux</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -75,9 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_Exploration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploring The Filesystem</span></a>
+ <span class="menu-text">Exploring the Filesystem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Combination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combining Commands</span></a>
+ <span class="menu-text">Command output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_Installation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Managing Tools</span></a>
+ <span class="menu-text">Managing Software</span></a>
   </div>
 </li>
     </ul>
@@ -219,7 +219,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#connecting" id="toc-connecting" class="nav-link" data-scroll-target="#connecting">Connecting</a></li>
   <li><a href="#commands" id="toc-commands" class="nav-link" data-scroll-target="#commands">Commands</a></li>
   <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help">Help</a></li>
-  <li><a href="#tips" id="toc-tips" class="nav-link" data-scroll-target="#tips">Tips</a></li>
+  <li><a href="#command-line-tips" id="toc-command-line-tips" class="nav-link" data-scroll-target="#command-line-tips">Command line tips</a>
+  <ul class="collapse">
+  <li><a href="#history" id="toc-history" class="nav-link" data-scroll-target="#history">History</a></li>
+  <li><a href="#tab-completion" id="toc-tab-completion" class="nav-link" data-scroll-target="#tab-completion">Tab completion</a></li>
+  <li><a href="#shortcuts" id="toc-shortcuts" class="nav-link" data-scroll-target="#shortcuts">Shortcuts</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -228,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro To Linux</h1>
+<h1 class="title">Getting started with the Shell</h1>
 </div>
 
 
@@ -249,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="why" class="level2">
 <h2 class="anchored" data-anchor-id="why">Why?</h2>
 <p>One of the first questions people often ask is: Why do I need Linux? If people are familiar with graphical interfaces used for programs in Windows, why do bioinformaticians use command line? The short answer is that command line and Linux are lightweight, highly flexible, and maybe most importantly for research: free. Besides this, many bioinformatics tools are written and used without a graphical interface, which keeps them lightweight. This makes command line knowledge essential for bioinformatic data processing.</p>
-<p>Like Windows and macOS, Linux is an operating system. It manages the computer’s hardware and allows you to run applications. There are many different versions (or distributions) of Linux. Some commercial distributions have a paid licence, but many are completely free. One of the most popular choices is Ubuntu, which is free to download, easy to install, and widely used by both beginners and experienced users. It is the also the version of Linux installed on the DRP-HCB servers.</p>
+<p>Like Windows and macOS, Linux is an operating system. It manages the computer’s hardware and allows you to run applications. There are many different versions (or distributions) of Linux. Some commercial distributions have a paid licence, but many are completely free. One of the most popular choices is <a href="https://ubuntu.com/">Ubuntu</a>, which is free to download, easy to install, and widely used by both beginners and experienced users. It is the also the version of Linux installed on the DRP-HCB servers.</p>
 <p>One thing to note is that bioinformaticians are not the only people who use Linux. Linux powers a large proportion of the world’s servers, supercomputers, and cloud computing infrastructure. Many of these systems do not have a graphical user interface. Instead, they are controlled through the command line. By avoiding the overhead of a graphical interface, more memory and processing power are available for running computationally intensive tasks, such as analysing genomic data.</p>
 </section>
 <section id="bash-shell" class="level2">
@@ -260,14 +265,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="connecting" class="level2">
 <h2 class="anchored" data-anchor-id="connecting">Connecting</h2>
-<p>Today, we will connect to one of the DRP servers to start our Linux journey. Connecting to the server is dependent on the machine you are working with. To connect</p>
+<p>Today, you will connect to one of the DRP-HCB servers to start your Linux journey. Connecting to the server is dependent on the machine you are working with. To connect:</p>
 <ul>
 <li>Both Linux and Mac have a “Terminal”, which is command line and can connect to a server using ssh. By typing in the following in your terminal, you can easily connect to the DRP server.<br>
 <em>Replace &lt;UUN&gt; by your own UUN or username.</em></li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>UUN<span class="op">&gt;</span>@bifx-core1.bio.ed.ac.uk</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>For Windows, a tool like <a href="https://mobaxterm.mobatek.net/download.html">MobaXTerm</a> needs to be installed to be able to connect to a server easily. Connecting uses ssh in this case as well. Take a look at the <a href="https://mobaxterm.mobatek.net/demo.html">MobaXTerm demo</a> to learn how to connect using ssh. Make sure to use you UUN as your username and the server link as follow:</li>
+<li>For Windows, a tool like <a href="https://mobaxterm.mobatek.net/download.html">MobaXTerm</a> needs to be installed to be able to connect to a server easily. Connecting uses ssh in this case as well. Take a look at the <a href="https://mobaxterm.mobatek.net/demo.html">MobaXTerm demo</a> to learn how to connect using ssh. Make sure to use you UUN as your username and the server link as follows:</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bifx-core1.bio.ed.ac.uk</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You might be asked if you trust the server, make sure to answer yes. Once you’ve entered your password you should connect to the server and see something like the following:</p>
@@ -302,18 +307,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>options (also called flags or switches): modify the way the command works</li>
 <li>arguments: filenames or other targets that direct the action of the command</li>
 </ul>
-<p>Options and arguments are not always needed for commands to run. If no options or arguments are given, default settings will be used. We can run commands by typing in the command and pressing [ENTER].</p>
-<p>Here an example of default behaviour versus using options.</p>
+<p>Options and arguments are not always needed for commands to run. If no options or arguments are given, default settings will be used. You can run commands by typing in the command and pressing <kbd>ENTER</kbd>.</p>
+<p>Here is an example of using default behaviour with the <code>date</code> command.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The command will result in the date will be displayed in BST (British Summer Time). However if we use the -u option:</p>
-<p><em><strong>Note:</strong> be aware to put a space between the command and the option</em></p>
+<p>The command results in the date being displayed in BST (British Summer Time). However, if you use the -u option:</p>
+<p><em><strong>Note:</strong> be aware to put a space between the command and the option.</em></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span> <span class="at">-u</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The date will be displayed in UTC (Coordinated Universal Time). So using options we can change the behavior of the command.</p>
+<p>The date will be displayed in UTC (Coordinated Universal Time). By using options, you can change the default behavior of a command.</p>
+<p>How do you know what options are available to a command?</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 1:
 </h2>
-<p>Try to break the command by using other options. What happens?</p>
+<p>Try using different single letter options with the <code>date</code> command. Can you find an option that doesn’t exist? What happens?</p>
 <details>
 <summary>
 Solution
@@ -330,14 +336,14 @@ Solution
 </section>
 <section id="help" class="level2">
 <h2 class="anchored" data-anchor-id="help">Help</h2>
-<p>While the use of options and arguments makes commands more powerful and flexible, they can be difficult to remember, and can vary between different versions of the command. Luckily, there are several ways to find out what a command does and what options are available for a command. Most commands can be use with the <strong>–help</strong> or <strong>-h</strong> option, which will provide a description of the command and the options.</p>
+<p>While the use of options and arguments makes commands more powerful and flexible, they can be difficult to remember, and can vary between different versions of the command. Luckily, there are several ways to find out what a command does and what options are available for a command. Most commands can be used with the <strong>--help</strong> or <strong>-h</strong> option, which will provide a description of the command and the options.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>In some cases, commands will not have the –help or -h option. In these cases, <code>man</code> or <code>info</code> might be available. These all work in similar ways, below an example of how to use man.</p>
+<p>In some cases, commands will not have the --help or -h option. In these cases, <code>man</code> or <code>info</code> pages might be available. The <code>man</code> command displays the manual page for a command, while <code>info</code> provides more detailed information. Below is an example of how to use <code>man</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> date</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>For both <code>man</code> and <code>info</code>, to get out of the information screen, press <code>Q</code>.</p>
+<p>To get out of the information screen, press <code>q</code> for quit.</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 2:
 </h2>
 <p>Run the command:<br>
 </p>
@@ -352,32 +358,42 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>Looking the result of the command, we can already see that this give a number. Look at the %j option in the help of date, it explains in the help that %j gives the number of the day of the year. The 25th of December is the 359th day of the year (unless it is a leap year then it is the 360th day).</p>
+<p>Looking at the result of the command, you can already see that this gives a number. Look at the %j option in the help documentation of date, it explains that %j gives the number of the day of the year. The 25th of December is the 359th day of the year (unless it is a leap year, then it is the 360th day).</p>
 </div>
 </details>
 </div>
 </section>
-<section id="tips" class="level2">
-<h2 class="anchored" data-anchor-id="tips">Tips</h2>
-<p>Working within Linux sometimes means we want to see what we did previous or rerun commands. Using the <code>Arrow Up</code> and <code>Arrow Down</code> keys we can explore and rerun without having to write the whole command again.</p>
-<p>There are few shortcuts within our shell that will come in handy whenever we are working within our environments.</p>
+<section id="command-line-tips" class="level2">
+<h2 class="anchored" data-anchor-id="command-line-tips">Command line tips</h2>
+<section id="history" class="level3">
+<h3 class="anchored" data-anchor-id="history">History</h3>
+<p>When working on the command line, you often want to scroll through or rerun previous commands. Using the <kbd>↑</kbd> and <kbd>↓</kbd> keys, you can explore and rerun without having to write the whole command again. The <code>history</code> command can also be used to print or search all of our recent commands.</p>
+</section>
+<section id="tab-completion" class="level3">
+<h3 class="anchored" data-anchor-id="tab-completion">Tab completion</h3>
+<p>Using tab completion allows you to type part of a command or filename and press the <kbd>Tab</kbd> key. The shell will try to complete the text based on available commands and filenames.</p>
+<p>For example, if you want to run the <code>date</code> command, you can type <em>dat</em> and press <kbd>Tab</kbd> to complete the command. This works, because the <code>date</code> command is the only available command that starts with <em>dat</em>.</p>
+<p>If you type <em>da</em> and press <kbd>Tab</kbd>, the shell will not complete the command, because there are multiple commands that start with <em>da</em>. In this case, hit the <kbd>Tab</kbd> key twice to see the available options.</p>
+</section>
+<section id="shortcuts" class="level3">
+<h3 class="anchored">Shortcuts</h3>
+<p>There are a few keyboard shortcuts within our shell that will come in handy whenever you are working within this environment.</p>
 <div class="key-points">
-<h2 class="anchored">
+<h2 class="anchored" data-anchor-id="shortcuts">
 <i class="fas fa-thumbtack"></i> Key points
 </h2>
 <ul>
 <li><code>Ctrl+a</code> or <code>Home</code> will move the caret (or text cursor) to the beginning of the line</li>
 <li><code>Ctrl+e</code> or <code>End</code> will move the caret to the end of the line</li>
-<li><code>Ctrl+k</code> will delete text from the current position of the caret to the end of the line</li>
+<li><code>Ctrl+k</code> will cut text from the current position of the caret to the end of the line</li>
 <li><code>Ctrl+y</code> or the middle mouse button will paste the last selected text at the caret position</li>
 <li><code>Ctrl+l</code> will clear the terminal</li>
-<li><code>Tab</code> will try to complete your command or filename from the previously typed text.<br>
-For example if you want to run <code>bedtools</code>, you can type <em>bedto</em> and press <code>Tab</code> to complete. If there are multiple options, it won’t complete the name. Press <code>Tab</code> twice to see the options available. For example try to type <em>bed</em> and press <code>Tab</code> twice</li>
 </ul>
 <p>Be aware that <code>Ctrl+c</code>, which is normally used for copying selected text, will terminate any command that you are currently running. If you want to copy something from the terminal, use the right mouse button to copy.</p>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

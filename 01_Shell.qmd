@@ -1,5 +1,5 @@
 ---
-title: "Intro To Linux"
+title: "Getting started with the Shell"
 format: html
 ---
 
@@ -11,7 +11,7 @@ format: html
 
 One of the first questions people often ask is: Why do I need Linux? If people are familiar with graphical interfaces used for programs in Windows, why do bioinformaticians use command line? The short answer is that command line and Linux are lightweight, highly flexible, and maybe most importantly for research: free. Besides this, many bioinformatics tools are written and used without a graphical interface, which keeps them lightweight. This makes command line knowledge essential for bioinformatic data processing.
 
-Like Windows and macOS, Linux is an operating system. It manages the computer's hardware and allows you to run applications. There are many different versions (or distributions) of Linux. Some commercial distributions have a paid licence, but many are completely free. One of the most popular choices is Ubuntu, which is free to download, easy to install, and widely used by both beginners and experienced users. It is the also the version of Linux installed on the DRP-HCB servers.
+Like Windows and macOS, Linux is an operating system. It manages the computer's hardware and allows you to run applications. There are many different versions (or distributions) of Linux. Some commercial distributions have a paid licence, but many are completely free. One of the most popular choices is [Ubuntu](https://ubuntu.com/), which is free to download, easy to install, and widely used by both beginners and experienced users. It is the also the version of Linux installed on the DRP-HCB servers.
 
 One thing to note is that bioinformaticians are not the only people who use Linux. Linux powers a large proportion of the world's servers, supercomputers, and cloud computing infrastructure. Many of these systems do not have a graphical user interface. Instead, they are controlled through the command line. By avoiding the overhead of a graphical interface, more memory and processing power are available for running computationally intensive tasks, such as analysing genomic data.
 
@@ -25,7 +25,7 @@ The environment in which you type and execute these commands is called a shell. 
 
 ## Connecting
 
-Today, we will connect to one of the DRP servers to start our Linux journey. Connecting to the server is dependent on the machine you are working with. To connect
+Today, you will connect to one of the DRP-HCB servers to start your Linux journey. Connecting to the server is dependent on the machine you are working with. To connect:
 
 -   Both Linux and Mac have a "Terminal", which is command line and can connect to a server using ssh.
 By typing in the following in your terminal, you can easily connect to the DRP server. \
@@ -36,7 +36,7 @@ ssh <UUN>@bifx-core1.bio.ed.ac.uk
 ```
 
 -   For Windows, a tool like [MobaXTerm](https://mobaxterm.mobatek.net/download.html) needs to be installed to be able to connect to a server easily.
-Connecting uses ssh in this case as well. Take a look at the [MobaXTerm demo](https://mobaxterm.mobatek.net/demo.html) to learn how to connect using ssh. Make sure to use you UUN as your username and the server link as follow:
+Connecting uses ssh in this case as well. Take a look at the [MobaXTerm demo](https://mobaxterm.mobatek.net/demo.html) to learn how to connect using ssh. Make sure to use you UUN as your username and the server link as follows:
 ``` bash
 bifx-core1.bio.ed.ac.uk
 ```
@@ -78,28 +78,30 @@ The basic structure of most Linux command is as followed:
 -   options (also called flags or switches): modify the way the command works
 -   arguments: filenames or other targets that direct the action of the command
 
-Options and arguments are not always needed for commands to run. If no options or arguments are given, default settings will be used. We can run commands by typing in the command and pressing \[ENTER\].
+Options and arguments are not always needed for commands to run. If no options or arguments are given, default settings will be used. You can run commands by typing in the command and pressing <kbd>ENTER</kbd>.
 
-Here an example of default behaviour versus using options.
+Here is an example of using default behaviour with the `date` command.
 
 ``` bash
 date
 ```
 
-The command will result in the date will be displayed in BST (British Summer Time). However if we use the -u option:
+The command results in the date being displayed in BST (British Summer Time). However, if you use the -u option:
 
-***Note:** be aware to put a space between the command and the option*
+***Note:** be aware to put a space between the command and the option.*
 
 ``` bash
 date -u
 ```
 
-The date will be displayed in UTC (Coordinated Universal Time). So using options we can change the behavior of the command.
+The date will be displayed in UTC (Coordinated Universal Time). By using options, you can change the default behavior of a command.
+
+How do you know what options are available to a command?
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 1:</h2>
 
-Try to break the command by using other options. What happens?
+Try using different single letter options with the `date` command. Can you find an option that doesn't exist? What happens?
 
 <details>
 
@@ -117,22 +119,22 @@ Run date with -p (`date -p`), you should get an error telling you what you are d
 
 ## Help
 
-While the use of options and arguments makes commands more powerful and flexible, they can be difficult to remember, and can vary between different versions of the command. Luckily, there are several ways to find out what a command does and what options are available for a command. Most commands can be use with the **--help** or **-h** option, which will provide a description of the command and the options. 
+While the use of options and arguments makes commands more powerful and flexible, they can be difficult to remember, and can vary between different versions of the command. Luckily, there are several ways to find out what a command does and what options are available for a command. Most commands can be used with the **\-\-help** or **-h** option, which will provide a description of the command and the options. 
 
 ``` bash
 date --help
 ```
 
-In some cases, commands will not have the --help or -h option. In these cases, `man` or `info` might be available. These all work in similar ways, below an example of how to use man. 
+In some cases, commands will not have the \-\-help or -h option. In these cases, `man` or `info` pages might be available. The `man` command displays the manual page for a command, while `info` provides more detailed information. Below is an example of how to use `man`. 
 
 ``` bash
 man date
 ```
 
-For both `man` and `info`, to get out of the information screen, press `Q`. 
+To get out of the information screen, press `q` for quit. 
 
 :::: challenge
-<h2><i class="fas fa-pencil-alt"></i> Challenge:</h2>
+<h2><i class="fas fa-pencil-alt"></i> Challenge 2:</h2>
 
 Run the command:\
 ``` bash
@@ -147,33 +149,40 @@ Using the help options, can you explain what this command has done?
 ::: solution
 <h2><i class="far fa-eye"></i> Solution:</h2>
 
-Looking the result of the command, we can already see that this give a number. Look at the %j option in the help of date, it explains in the help that %j gives the number of the day of the year. The 25th of December is the 359th day of the year (unless it is a leap year then it is the 360th day).
+Looking at the result of the command, you can already see that this gives a number. Look at the %j option in the help documentation of date, it explains that %j gives the number of the day of the year. The 25th of December is the 359th day of the year (unless it is a leap year, then it is the 360th day).
 
 :::
 </details>
 
 :::
 
-## Tips
+## Command line tips
 
-Working within Linux sometimes means we want to see what we did previous or rerun commands. Using the `Arrow Up` and `Arrow Down` keys we can explore and rerun without having to write the whole command again.
+### History
 
-There are few shortcuts within our shell that will come in handy whenever we are working within our environments.
+When working on the command line, you often want to scroll through or rerun previous commands. Using the <kbd>↑</kbd> and <kbd>↓</kbd> keys, you can explore and rerun without having to write the whole command again. The `history` command can also be used to print or search all of our recent commands.
 
+### Tab completion
+
+Using tab completion allows you to type part of a command or filename and press the <kbd>Tab</kbd> key. The shell will try to complete the text based on available commands and filenames.
+
+For example, if you want to run the `date` command, you can type *dat* and press <kbd>Tab</kbd> to complete the command. This works, because the `date` command is the only available command that starts with *dat*. 
+
+If you type *da* and press <kbd>Tab</kbd>, the shell will not complete the command, because there are multiple commands that start with *da*. In this case, hit the <kbd>Tab</kbd> key twice to see the available options.
+
+### Shortcuts
+
+There are a few keyboard shortcuts within our shell that will come in handy whenever you are working within this environment.
 
 :::: key-points
 <h2><i class="fas fa-thumbtack"></i> Key points</h2>
 
 - `Ctrl+a` or `Home` will move the caret (or text cursor) to the beginning of the line
 - `Ctrl+e` or `End` will move the caret to the end of the line
-- `Ctrl+k` will delete text from the current position of the caret to the end of the line
+- `Ctrl+k` will cut text from the current position of the caret to the end of the line
 - `Ctrl+y` or the middle mouse button will paste the last selected text at the caret position
 - `Ctrl+l` will clear the terminal
-- `Tab` will try to complete your command or filename from the previously typed text. \
-For example if you want to run `bedtools`, you can type *bedto* and press `Tab` to complete.
-If there are multiple options, it won't complete the name. Press `Tab` twice to see the options available. For example try to type *bed* and press `Tab` twice
 
 Be aware that `Ctrl+c`, which is normally used for copying selected text, will terminate any command that you are currently running. If you want to copy something from the terminal, use the right mouse button to copy.
 
 ::::
-

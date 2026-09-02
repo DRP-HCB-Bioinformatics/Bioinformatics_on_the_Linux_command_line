@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro To Linux – Introduction to Linux</title>
+<title>Working with Files – Introduction to Linux</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -75,9 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_Exploration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploring The Filesystem</span></a>
+ <span class="menu-text">Exploring the Filesystem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Combination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combining Commands</span></a>
+ <span class="menu-text">Command output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_Installation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Managing Tools</span></a>
+ <span class="menu-text">Managing Software</span></a>
   </div>
 </li>
     </ul>
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro To Linux</h1>
+<h1 class="title">Working with Files</h1>
 </div>
 
 
@@ -246,20 +246,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
 <section id="viewing" class="level2">
 <h2 class="anchored" data-anchor-id="viewing">Viewing</h2>
-<p>So far, we have only worked with empty files and haven’t looked at the content of files. There are several core ways to look at content of a file. First, lets move into the folder which contains a number of files to take a look at.</p>
+<p>So far, we have only worked with empty files and haven’t looked at the content of files. There are several core ways to look at the content of a file. First, lets move into the folder below.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux/yeast_files/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The first file we will take a look at is a <strong>BED</strong> files. This format contains information on genes located on a reference genome. Each line represents a gene. We will not focus on what the file contains too much, the main thing we need to know is that this a standard text file. There are several ways to look at the content of text files. The first is <code>head</code>, which will print the first few lines of the file to the terminal.</p>
+<p>The first file we will take a look at is a <strong>BED</strong> file. This file contains information on genes located on a reference genome, with each line representing a unique gene. This is a standard text file format used in bioinformatics. There are several ways to look at the content of text files. The first is <code>head</code>, which will print the first few lines of the file to the terminal.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> yeast_genes.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Similarly to looking at the start of the file, there is a command for looking at the end of a file, the command <code>tail</code> will return the last few lines of the file.</p>
+<p>Similarl to looking at the start of the file, there is a command for looking at the end of a file, the command <code>tail</code> will return the last few lines of the file.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> yeast_genes.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Both of these can be very useful to be able to peek at files, especially when they are really large files. To look at the full file, the <code>cat</code> command can be used to print the whole file to the terminal.</p>
+<p>Both of these can be very useful to be able to peek at files, especially when they are really large. To look at the full file, the <code>cat</code> command can be used to print the whole file to the terminal.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> yeast_genes.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For large files, the content will whizz past, too fast to read. To be able to scroll through the content of files easily the command <code>less</code> is useful.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> yeast_genes.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can scroll through the BED file one line at a time using the [Down Arrow] and the [Up Arrow] keys. You can also use the [Page Down] or [Space] and [Page Up] or [B] keys to scroll through the file one page at a time. To access the help, use the [H] key and finally to exit the file, use the [Q] key.</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 1:
 </h2>
 <p>Take a look at the <code>--help</code> for <code>head</code>. Print the first 5 lines of the BED file.</p>
 <details>
@@ -273,16 +273,14 @@ Solution
 </h2>
 <p>First, lets look at the help for <code>head</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>From the results, we can see that <code>-n</code> can be used to print a specific number of lines</p>
+<p>From the results, we can see that <code>-n</code> can be used to print a specific number of lines.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 yeast_genes.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <p>Another very useful command is <code>wc</code> (word count). This command will report the number of lines, words and bytes within the file.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> yeast_genes.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Often it will be used to look at the number of lines within the file, to only get the number of lines within the file, add the <code>-l</code> option.</p>
+<p>Often it will be used to look at the number of lines within the file. To only get the line count, add the <code>-l</code> option.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> yeast_genes.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="searching" class="level2">
@@ -296,15 +294,15 @@ Solution
 <p>The <code>grep</code> command has a lot of different options, an overview of the most important options can be found below.</p>
 <ul>
 <li><code>-i</code> will make the search case insensitive</li>
-<li><code>-v</code> will report all lines that do not match the searched term</li>
-<li><code>-c</code> will count the lines</li>
+<li><code>-v</code> will report all lines that do <strong>not</strong> match the searched term</li>
+<li><code>-c</code> will count the lines with a match</li>
 </ul>
-<p>There is also the option to use regular expressions within <code>grep</code>. If you have never heard of regular expressions, these are expressions that will help search for patterns instead of fixed text. Some characters can be used to search for patterns.</p>
+<p>There is also the option to use <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a> within <code>grep</code>. If you have never heard of regular expressions, these are expressions that will help search for patterns instead of fixed text. Some characters can be used to search for patterns.</p>
 <ul>
 <li><code>^</code> represents the start of a line</li>
 <li><code>$</code> represents the end of a line</li>
 </ul>
-<p>If we want to use complex regular expressions, options <code>-E</code> and <code>-P</code> can be used to be able use more complex regular expressions. <a href="https://en.wikipedia.org/wiki/Regular_expression">Regular expressions</a> in themselves are very useful for pattern finding, we will not go into them within this course, but the most important characters that will work with options <code>-E</code> and <code>-P</code> are shown below.</p>
+<p>More complex regular expressions can be used in grep with the options <code>-E</code> and <code>-P</code>.</p>
 <ul>
 <li><code>\t</code> represents a <code>tab</code></li>
 <li><code>\n</code> represents an <code>enter</code> (or new line)</li>
@@ -313,19 +311,17 @@ Solution
 <li><code>+</code> represents one or more occurrences of the character before the <code>+</code></li>
 </ul>
 </div>
-<p><br>
-</p>
 </section>
 <section id="binary-files" class="level2">
 <h2 class="anchored" data-anchor-id="binary-files">Binary files</h2>
-<p>Binary files are non human readable files. These files are specifically for computers to read. This includes zip files. Generally they are meant to be compressed to take up less space. Amazing, because in bioinformatics many files are big. In the yeast folder, there is an example of a compressed file. The file is gzipped, which is a different form of zip file. <strong>FASTQ</strong> files are commonly gzipped. These files contain DNA sequence information from sequencing platforms, the files contain sequence headers, sequences and quality information for sequences. We will look more in depth into them later on, but for now we will focus on compression.</p>
+<p>Binary files are non human readable files. These files are specifically for computers to read. This includes zip files. Generally, they are compressed to take up less space, which is great for large bioinformatics files. In the yeast folder, there is an example of a compressed file. The file is gzipped, which is a different form of zip file. <strong>FASTQ</strong> files are commonly gzipped. These files contain DNA sequence information from sequencing platforms. The files contain headers, sequences and quality information for each sequencing read. We will look more in depth into them later on, but for now we will focus on compression.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> raw_yeast_rnaseq_data.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Clearly not human readable. Sometimes we need to get information from these files without wanting to unpack them on the server. Linux has a number of commands that will work on compressed files. Similar to the commands we use previously, we can use <code>zless</code>, <code>zcat</code> and <code>zgrep</code> on compressed files.</p>
+<p>Clearly not human readable. Sometimes we need to get information from these files without wanting to unpack them on the server. Linux has a number of commands that will work on compressed files. Similar to the commands we used previously, we can use <code>zless</code>, <code>zcat</code> and <code>zgrep</code> on compressed files.</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 1:
 </h2>
-<p>Extract all lines <strong>starting</strong> with an <code>@</code> symbol from <code>raw_yeast_rnaseq_data.fastq.gz</code>. Count the amount of lines.</p>
+<p>Extract all lines <strong>starting</strong> with an <code>@</code> symbol from <code>raw_yeast_rnaseq_data.fastq.gz</code> and count the number of lines.</p>
 <details>
 <summary>
 Solution
@@ -336,20 +332,18 @@ Solution
 <i class="far fa-eye"></i> Solution:
 </h2>
 <p>First, lets get all the lines that <strong>start</strong> with an <code>@</code> symbol. Because this is a binary file, we need to use <code>zgrep</code>. Remember that we want lines that start with the symbol, so we need to use <code>^</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zgrep</span> <span class="st">"&gt;@"</span> raw_yeast_rnaseq_data.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zgrep</span> <span class="st">"^@"</span> raw_yeast_rnaseq_data.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To get the count of lines that match this, we can use the <code>-c</code> option for <code>zgrep</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zgrep</span> <span class="at">-c</span> <span class="st">"&gt;@"</span> raw_yeast_rnaseq_data.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zgrep</span> <span class="at">-c</span> <span class="st">"^@"</span> raw_yeast_rnaseq_data.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 </section>
 <section id="zipping-and-unzipping" class="level2">
 <h2 class="anchored" data-anchor-id="zipping-and-unzipping">Zipping and Unzipping</h2>
-<p>Even though compressed files use less disk space to store, in some cases we want to unpack them. There are 3 main types of compression files that need different ways of unpacking: zip, gzip and tar.</p>
+<p>Even though compressed files use less disk space, in some cases we want to unpack them. There are 3 main types of compression files that need different ways of unpacking: zip, gzip and tar.</p>
 <ul>
-<li><code>unzip</code> can unpack zipped files, <code>zip</code> can create zips. Zips can contains single files or complete folders</li>
+<li><code>unzip</code> can unpack zipped files, <code>zip</code> can create zips. Zips can contains single files or complete folders.</li>
 <li><code>gunzip</code> can unpack gzipped files and <code>gzip</code> created gzipped files. Generally gzip is used for single files.</li>
 <li><code>tar</code> can be used to unpack and create tar files. Tar is used for folders and often another form of compressing is used on top of it. You will often find <code>tar.gz</code> files.</li>
 </ul>
@@ -357,9 +351,9 @@ Solution
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> raw_yeast_rnaseq_data.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 2:
 </h2>
-<p>Check if the file is now unpacked. Confirmed by printing the first 20 lines of the file.</p>
+<p>Check if the file is now unpacked by printing the first 20 lines of the file.</p>
 <details>
 <summary>
 Solution
@@ -374,15 +368,13 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<p>To pack the file back up, the command <code>gzip</code> is used.</p>
+<p>To gzip the file again, the command <code>gzip</code> is used.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> raw_yeast_rnaseq_data.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This should again results in a file with the same name, with an added <code>.gz</code> to the end.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 3:
 </h2>
 <p>Navigate back to the Intro_to_Linux folder, what is the name of the file which ends in <code>tar.gz</code>.</p>
 <details>
@@ -402,13 +394,18 @@ Solution
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<p>To unpack the file, we can use <code>tar</code>. Several options are needed to unpack the file. In the <code>tar</code> command to unpack, <code>-x</code> need to be add to specify that the files need to be extracted, <code>-</code>v means that the command will report what it is doing (verbose), <code>-a</code> means it automatically handles everything that is needed for the decompression, and the <code>-f</code> (which need to be at the end) specifies which file to unpack. As you can see below, we can add all the options together into a single combination for the <code>tar</code> command. The command is the following:</p>
+<p>To unpack the file, we can use <code>tar</code>. Several options are needed to unpack the file.</p>
+<ul>
+<li><code>-x</code> specifies that files need to be extracted.</li>
+<li><code>-v</code> reports what the command is doing (verbose).</li>
+<li><code>-a</code> automatically handles decompression (gunzip in this case)</li>
+<li><code>-f</code> (which needs to be at the end) specifies the tar file to unpack.</li>
+</ul>
+<p>As you can see below, we can add all the options together into a single combination for the <code>tar</code> command. The command is the following:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xvaf</span> tar-latest.tar.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will take a couple of minutes, if it is confusing to add options together, the previous is the same as the following:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-x</span> <span class="at">-v</span> <span class="at">-a</span> <span class="at">-f</span> tar-latest.tar.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A list of files comes past as the file is unpacked. With <code>ls</code> we can double check that a folder named <code>tar-1.35</code> has been created within the current folder.</p>
+<p>As the file is unpacked, a list of files and folders is written to the terminal. We can double check that a folder named <code>tar-1.35</code> has been created within the current folder using <code>ls</code>.</p>
 
 
 </section>

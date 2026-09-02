@@ -11,19 +11,19 @@ website:
       - href: 01_Shell.qmd
         text: Getting Started with the Shell
       - href: 02_Exploration.qmd
-        text: Exploring The Filesystem
+        text: Exploring the Filesystem
       - href: 03_Creation.qmd
         text: Creating Files
       - href: 04_Files.qmd
         text: Working with Files
       - href: 05_Combination.qmd
-        text: Combining Commands
+        text: Command output
       - href: 05.5_Text_editors.qmd
         text: Text Editors
       - href: 06_Bioinformatics.qmd
         text: Bioinformatics 101
       - href: 07_Installation.qmd
-        text: Managing Tools
+        text: Managing Software
 format:
   html:
     theme: cosmo

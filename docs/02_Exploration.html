@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro To Linux – Introduction to Linux</title>
+<title>Exploring the Filesystem – Introduction to Linux</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -75,9 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_Exploration.html">Exploring The Filesystem</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_Exploration.html">Exploring the Filesystem</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_Exploration.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Exploring The Filesystem</span></a>
+ <span class="menu-text">Exploring the Filesystem</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Combination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Combining Commands</span></a>
+ <span class="menu-text">Command output</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_Installation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Managing Tools</span></a>
+ <span class="menu-text">Managing Software</span></a>
   </div>
 </li>
     </ul>
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro To Linux</h1>
+<h1 class="title">Exploring the Filesystem</h1>
 </div>
 
 
@@ -247,14 +247,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="system-structure" class="level2">
 <h2 class="anchored" data-anchor-id="system-structure">System structure</h2>
 <p>Before we get to work with Linux, it is good to know how the system is structured. Files on Linux are grouped into <strong>directories</strong> (also called folders, similar to Windows and Mac). The directories are structured in a tree structure. This means directories are within other directories, creating a complex hierarchical tree like structure. At the base of it all is the <strong>root directory</strong>, which is indicated with “/”. This directory holds everything. It can contain <strong>files</strong> and <strong>subdirectories</strong>. Each subdirectory in turn can contain other files and subdirectories, and those can contain files and subdirectories, and so on.<br>
-An example of the file system is shown below. UUN in this figure should be replaced with your own UUN to find your own home directory.</p>
+An example of the file system is shown below.</p>
+<p>User directories are usually stored in the <code>/home</code> directory and named after each user. UUN in the figure below should be replaced with your own UUN to find your own home directory.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/LinuxFileSystem.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 <p>It is vital to understand that you always work within a specific directory and any commands you run will be run in the context of that specific directory.</p>
-<p>There are a few special characters when working within the file system that refer to specific folders. We have seen two already, and in the table below and overview is give of these special characters that can be used to browse the tree.</p>
+<p>There are a few special characters, when working within the file system, that refer to specific folders. The table below gives an overview of the special characters that can be used to browse the tree.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -281,11 +282,11 @@ An example of the file system is shown below. UUN in this figure should be repla
 </tr>
 </tbody>
 </table>
-<p><br>
-With the knowledge of what the tree looks like and the use of special characters, we should be able to find our files. To identify any file or directory we need to determine its <strong>path</strong>. The path is the route to the file or directory starting from a directory. Paths are written as the list of directory names separated by a forward slash.<br>
-For example <code>/home/johndoe/mouse_genome.fa</code> links to a file named mouse_genome in the home folder belonging to johndoe. When referring to files starting from the root directory, we call these paths <strong>absolute paths</strong>. Basically, what this means is that no matter who is logged in, the path will refer to a specific file.<br>
-If I am logged in as user johndoe, <code>~/mouse_genome.fa</code> would link to the same file. When creating paths that do not use the root directory as a base, we call these paths <strong>relative paths</strong>. They will work for specific users or from specific folders.<br>
-If you are every in doubt, use the absolute paths (start the path from the root).</p>
+<p>With the knowledge of what the tree looks like and the use of special characters, we should be able to find our files. To identify any file or directory we need to determine its <strong>path</strong>. The path is the route to the file or directory starting from a directory. Paths are written as the list of directory names separated by a forward slash.</p>
+<p>For example <code>/home/johndoe/mouse_genome.fa</code> links to a file named mouse_genome in the home folder belonging to johndoe. When referring to files starting from the root directory, we call these paths <strong>absolute paths</strong>. This means that no matter where you are in the filesystem, the path will always refer to the same file.</p>
+<p>We can also use <strong>relative paths</strong>, which are paths that start from the current working directory. For example, if we are currently in the home directory of user johndoe, we can refer to the same file simply as <code>mouse_genome.fa</code>. Relative paths are generally shorter and easier to type, but they are dependent on the current working directory.</p>
+<p>A user logged in as janedoe would have a different home directory under <code>/home/janedoe</code>, and the relative path <code>mouse_genome.fa</code> would only work if they also had a file named mouse_genome.fa in their home directory. Still, they would be working with a different file from johndoe. To access the same file as johndoe, janedoe would need to use the absolute path <code>/home/johndoe/mouse_genome.fa</code>, or a relative path <code>../johndoe/mouse_genome.fa</code>.</p>
+<p>If you are ever in doubt, use the absolute path (start the path from the root).</p>
 <div class="key-points">
 <h2 class="anchored">
 <i class="fas fa-thumbtack"></i> Key points
@@ -293,21 +294,19 @@ If you are every in doubt, use the absolute paths (start the path from the root)
 <p>There are several best practices for choosing good file and directory names.</p>
 <ol type="1">
 <li>Everthing in Linux is <strong>case sensitive</strong>. If in doubt, stick to <strong>lower case</strong>.<br>
-The filename <code>myfile</code> is <strong>not</strong> the same as <code>MyFile</code>, <code>Myfile</code>, or <code>myFile</code>. This also is the case of any commands we work with.</li>
+The filename <code>myfile</code> is <strong>not</strong> the same as <code>MyFile</code>, <code>Myfile</code>, or <code>myFile</code>. This is also the case for any commands we work with.</li>
 <li>File and directory names should <strong>only contain letters, numbers, hyphens, underscores</strong> and <strong>full stops</strong></li>
 <li>File and directory names should <strong>not contain any spaces</strong></li>
 </ol>
-<p>In contrast to graphical environments, the command line interface can become cumbersome whenever our file or directory names contain spaces of special characters. For example, the shell will consider <code>my file</code> to be two files, i.e.&nbsp;“my” and “file”. If you have files containing spaces or specifical characters and you want to use them within Linux, you will need to enclose the full filename in quotation marks or you will need to escape spaces and special characters with a backslash. This makes sure that the shell understands it is part of the filename: <code>"my file"</code> or <code>my\ file</code></p>
-<p>To make our live easier, it is best to avoid spaces and unusual characters all together.</p>
+<p>In contrast to graphical environments, the command line interface can become cumbersome whenever our file or directory names contain spaces or special characters. For example, the shell will consider <code>my file</code> to be two files, i.e.&nbsp;“my” and “file”. If you have files containing spaces or special characters and you want to use them within Linux, you will need to enclose the full filename in quotation marks or you will need to escape spaces and special characters with a backslash. This makes sure that the shell understands it is part of the filename: <code>"my file"</code> or <code>my\ file</code></p>
+<p>To make our life easier, it is best to avoid spaces and unusual characters all together.</p>
 </div>
-<p><br>
-</p>
 <p>Whenever we first start a shell on a Linux system, your <strong>working</strong> or <strong>current directory</strong> will be your <strong>home directory</strong>. On most Linux systems your home directory will be called /home/username.</p>
-<p>When we forget to reference to full path, Linux will look for the file in the current working directory. If we ever want to check what the current working directory is, we can use the command pwd.</p>
+<p>Unless we reference the path, Linux will look for a file in the current working directory. If we ever want to check what the current working directory is, we can use the command <code>pwd</code> which stands for present working directory.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 1:
 </h2>
 <p>What is your current working directory?</p>
 <details>
@@ -326,37 +325,36 @@ Solution
 </section>
 <section id="files-and-folders" class="level2">
 <h2 class="anchored" data-anchor-id="files-and-folders">Files and Folders</h2>
-<p>We are going to play with files and directories and take a look at how to browse them and refer to them. To look at which files and subdirectories we have within our folder, we can use the list(ls) command.</p>
+<p>We are going to play with files and directories and take a look at how to browse them and refer to them. To look at which files and subdirectories we have within our folder, we can use the <code>ls</code> (list) command.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>It might be that there are currently no files within your directory, so just to have some files to play with, we will copy them from a central location on the DRP Bioinformatics server. For this we will use the copy(cp) command.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-R</span> /library/training/Intro_to_Linux ./</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>NOTE:</strong> if you are working from your own server of system, download the data as followed and unpack it. You do NOT need to run the following if you are working on the DRP Bioinformatics server. Don’t worry about the messages you get on screen, we will talk about these later on.</p>
+<p>It might be that there are currently no files within your directory. Just to have some files to play with, we will copy them from a central location on the DRP-HCB Bioinformatics server. For this we will use the <code>cp</code> (copy) command.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> /library/training/Intro_to_Linux ./</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>NOTE:</strong> if you are working from your own server or system, download the data as followed and unpack it. You do NOT need to run the following if you are working on the DRP-HCB Bioinformatics server. Don’t worry about the messages you get on screen, we will talk about these later on.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://bifx-core3.bio.ed.ac.uk/~hdeweer/Intro_to_Linux.tar.gz</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xzvf</span> Intro_to_Linux.tar.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If we take a look again at what is in our folders, we will now see that a folder has been added called Intro_to_Linux.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If we want to know what is inside the folder, we can use ls again and use an <strong><em>argument</em></strong> to specify the folder that we want to explore.</p>
+<p>If we want to know what is inside the folder, we can use <code>ls</code> again and use an <strong><em>argument</em></strong> to specify the folder that we want to explore.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The folder is in our home, which means the ls command has run in the current location. We can use full paths as well.<br>
+<p>The folder is in our home directory, which means the <code>ls</code> command has run in the current location. We can use absolute paths as well.<br>
 <em>Replace &lt;UUN&gt; by your own UUN or username.</em></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /home/<span class="op">&lt;</span>UUN<span class="op">&gt;</span>/Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>There is another way to reference folder within our how if you remember. We can use the ~ to reference our home.</p>
+<p>We can also use the <code>~</code> shortcut to reference our home directory.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The last 3 commands all have the same results, which should show us the content of the folder Intro_to_Linux. We will keep practicing throughout the day.<br>
-<br>
-As mentioned before, Linux has difficulties with spaces in names. There is one directory in our Intro_to_Linux directory that contains spaces. When Linux reports files or directories that contain special characters, it will put quotes around the name to indicate there is something about the name which is outside the general rules. Before we get into how to deal with files and directories with spaces, lets look at how to navigate the system.</p>
+<p>The last 3 commands all have the same results, which should show us the content of the folder Intro_to_Linux.</p>
+<p>As mentioned before, Linux has difficulties with spaces in names. There is one directory in our Intro_to_Linux directory that contains spaces. When Linux reports files or directories that contain special characters, it will put quotes around the name to indicate there is something about the name which is outside the general rules. Before we get into how to deal with files and directories with spaces, lets look at how to navigate the system.</p>
 </section>
 <section id="navigaton" class="level2">
 <h2 class="anchored" data-anchor-id="navigaton">Navigaton</h2>
-<p>We aren’t limited to staying and working from one directory. To move from one to another directory, use the command <code>cd</code> and add as an <strong><em>argument</em></strong> the folder that you want to navigate to.</p>
+<p>We aren’t limited to staying and working in one directory. To move between directories, use the <code>cd</code> (change directory) command and add the folder that you want to navigate to as an <strong><em>argument</em></strong>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If you take a look at the actual prompt, this has now changed from<br>
-<code>&lt;UUN&gt;@bifx-core1:~$</code> to <code>&lt;UUN&gt;@bifx-core1:~/Intro_to_Linux$</code></p>
+<p>If you take a look at the actual prompt, this has now changed to reflect your current location:</p>
+<p><code>&lt;UUN&gt;@bifx-core1:~$</code> to <code>&lt;UUN&gt;@bifx-core1:~/Intro_to_Linux$</code></p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 2:
 </h2>
-<p>Navigate back to the parent directory of this folder. Confirm which folder you are in is your home folder</p>
+<p>Navigate back to the parent directory of this folder. Confirm the folder you are in is your home folder.</p>
 <details>
 <summary>
 Solution
@@ -366,22 +364,22 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>Remember the different special character meanings in the table above. Using <code>..</code> we can navigate to the parent directory. To check which folder we are currently in is we can again use <code>pwd</code>.</p>
+<p>Remember the different special character meanings in the table above. Using <code>..</code> we can navigate to the parent directory. We can use <code>pwd</code> to check which folder we are currently in.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If you used a different method to get back to your home folder, that is amazing, there are multiple ways to the same folder.</p>
+<p>If you used a different method to get back to your home folder, that is amazing, there are multiple ways to get back to your home folder e.g.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/UUN</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<p>Using the <code>..</code> we can go to the parent directory of the current directory. We can use multiple times to go back up multiple times.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../..</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Using <code>..</code> we can go to the parent directory of the current directory. We can use this multiple times to go up several levels.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../..</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Notice that when we ask for the <code>pwd</code> we just get a <code>/</code>. This means we are now be in the root directory and have therefore gone up two levels.</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 3:
 </h2>
 <p>Navigate back to the Intro_to_Linux folder.</p>
 <details>
@@ -394,15 +392,13 @@ Solution
 <i class="far fa-eye"></i> Solution:
 </h2>
 <p>Looking at the <code>ls</code> commands above we showed 3 different ways to get to the folder. Use any of these to get back to your home.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 4:
 </h2>
 <p>Navigate into the Intro_to_Linux/genomes/human folder.</p>
 <details>
@@ -415,17 +411,16 @@ Solution
 <i class="far fa-eye"></i> Solution:
 </h2>
 <p>From where we are currently, we don’t have to use the full path, we can use a relative path.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> genomes/human</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> genomes/human</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-Because we are already in the Intro_to_Linux folder, we can create a relative path from our current folder into the folder we actually want to be in. It is important to remember that relative paths change whenever our current working directory changes or the user that is running the command. Absolute paths will always be the same. But what happens if we try to navigate to a folder that exists but is not in the current directory?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mouse</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Because we are already in the Intro_to_Linux folder, we can create a relative path from our current folder into the folder we actually want to be in. It is important to remember that relative paths change whenever our current working directory changes. Absolute paths will always be the same. But what happens if we try to navigate to a folder that exists but is not in the current directory?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mouse</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The computer tells us that the directory does not exists.</p>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 5:
 </h2>
 <p>Navigate to the Intro_to_Linux/genomes/mouse folder using a relative path.</p>
 <details>
@@ -437,26 +432,22 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>If we want to navigate to the mouse folder using relative path from our current working directory, we need to know where we are (we can always double check this is <code>pwd</code>). Knowing that we are in the Intro_to_Linux/genomes/human folder and wanting to go to the Intro_to_Linux/genomes/mouse folder, we can use the <code>..</code> character to go up a level.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../mouse</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If we want to navigate to the mouse folder using a relative path from our current working directory, we need to know where we are (we can always double check this is <code>pwd</code>). Knowing that we are in the Intro_to_Linux/genomes/human folder and wanting to go to the Intro_to_Linux/genomes/mouse folder, we can use the <code>..</code> character to go up a level.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../mouse</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <p>We know how to navigate normal directories, but what about the strange one we saw previously with the spaces in it. Lets go back to the Intro_to_Linux folder first.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Within this folder there is a folder named “dir with spaces”. If we want to know what is inside this folder, we would use the <code>ls</code> command with the name of the folder behind it. What happens if we do just that?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> dir with spaces</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Basically, Linux thinks we want to know what is inside 3 different folders: dir, with, and spaces. These all do not exist and so we get errors. When using <code>ls</code>, Linux puts quotes around the name when it reports it to us, if we want to ask what is inside we can use the same system.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="st">'dir with spaces'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><br>
-</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> dir with spaces</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Basically, Linux thinks we want to know what is inside 3 different folders: dir, with, and spaces. None of these exist and so we get errors. When using <code>ls</code>, Linux puts quotes around the name when it reports it to us, if we want to ask what is inside we can use the same system.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="st">'dir with spaces'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="challenge">
 <h2 class="anchored">
-<i class="fas fa-pencil-alt"></i> Challenge:
+<i class="fas fa-pencil-alt"></i> Challenge 6:
 </h2>
-What happens if we try to use <code>Tab</code> completion?
+<p>What happens if we try to use <code>Tab</code> completion?</p>
 <details>
 <summary>
 Solution
@@ -467,25 +458,22 @@ Solution
 <i class="far fa-eye"></i> Solution:
 </h2>
 <p>Type the first part of the folder name “dir” and press <code>Tab</code>. The following should show up.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> dir\ with\ spaces/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> dir\ with\ spaces/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
-<p>To complete the command, Linux puts a <code>\</code> before the spaces. This is known as escaping characters. When we put a <code>\</code> before a special character, we tell the computer to disregard what it would normally mean. We can also use that in full paths.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/Intro_to_Linux/dir\ with\ spaces</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To complete the command, Linux puts a <code>\</code> before the spaces. This is known as escaping characters. When we put a <code>\</code> before a special character, we tell the computer to disregard its normal meaning. We can also use that in full paths.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/Intro_to_Linux/dir\ with\ spaces</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>It’s not the nicest, but it does mean we can look at files that have special characters without having to rename them before working with them.</p>
 </section>
 <section id="exercises" class="level2">
 <h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<p>Below are a number of exercises to explore looking into folders and moving around the system.</p>
+<p>Below are a number of exercises designed to explore the filesystem.</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 1:
 </h2>
-<p>Navigate back to your home directory.<br>
-List the content of the Intro_to_Linux directory. Do you need to use <code>cd</code> for this?</p>
+<p>Navigate back to your home directory. List the contents of the Intro_to_Linux directory without moving into it.</p>
 <details>
 <summary>
 Solution
@@ -495,21 +483,19 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>We do not have to move folders to be able to see the content of a folder. Using <code>ls</code> we can specify which folder we want to look at.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We do not have to move folders to be able to see the content of a folder. Using <code>ls</code> we can specify the folder we want to look at.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> Intro_to_Linux</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 2:
 </h2>
 <p>Navigate to the Intro_to_Linux directory.<br>
-List the content of your home folder without moving directory.</p>
+List the contents of your home folder without moving directory.</p>
 <details>
 <summary>
 Solution
@@ -520,19 +506,17 @@ Solution
 <i class="far fa-eye"></i> Solution:
 </h2>
 <p>We do not have to move folders to be able to see the content of a folder. Using <code>ls</code> we can specify which folder we want to look at.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Intro_to_Linux</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ../</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Intro_to_Linux</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ../</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 3:
 </h2>
-<p>Using <code>--help</code>, learn what the option <code>-a</code> affects when running the <code>ls</code> command.</p>
+<p>Using <code>--help</code>, learn how the options <code>-a</code> and <code>-l</code> affect the <code>ls</code> command.</p>
 <details>
 <summary>
 Solution
@@ -543,23 +527,23 @@ Solution
 <i class="far fa-eye"></i> Solution:
 </h2>
 <p>Run <code>ls</code> with the <code>--help</code> option. Take a look at <code>-a</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If we use the <code>-a</code> option when running <code>ls</code>, we do not ignore entries starting with <code>.</code>.<br>
-A good folder to compare this on is the home folder.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span> ~</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Do you see the differences in files reported?</p>
+A good folder to try this on is the home folder.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span> ~</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Do you see the differences in files reported? Files beginning with <code>.</code> are known as hidden files. These are generally configuration files or files used by the operating system.</p>
+<p>If we use the <code>-l</code> option when running <code>ls</code>, the output is in long mode. This gives extra information about files and folders, like their size, access permissions and when they were last modified.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> ~</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
 <i class="fa fa-pencil-alt"></i> Exercise 4:
 </h2>
-<p>Write the <strong>absolute</strong> path for the genomes folder within the Intro_to_Linux folder.</p>
+<p>List the contents of the genomes folder within the Intro_to_Linux folder using its <strong>absolute</strong> path.</p>
 <details>
 <summary>
 Solution
@@ -571,15 +555,13 @@ Solution
 </h2>
 <p>Remember that the absolute path starts from the root <code>/</code><br>
 Replace the <uun> with your UUN.</uun></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /home/<span class="op">&lt;</span>UUN<span class="op">&gt;</span>/Intro_to_Linux/genomes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /home/<span class="op">&lt;</span>UUN<span class="op">&gt;</span>/Intro_to_Linux/genomes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 <div class="exercise">
 <h2 class="anchored">
-<i class="fa fa-pencil-alt"></i> Exercise 4:
+<i class="fa fa-pencil-alt"></i> Exercise 5:
 </h2>
 <p>Write the <strong>relative</strong> path in two different ways from you current location for the genomes folder within the Intro_to_Linux folder.</p>
 <details>
@@ -591,15 +573,13 @@ Solution
 <h2 class="anchored">
 <i class="far fa-eye"></i> Solution:
 </h2>
-<p>Remember that the relative path starts from a variable location. Because we should currently be in the Intro_to_Linux folder, the following should work.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/Intro_to_Linux/genomes</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> genomes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Because we should currently be in the Intro_to_Linux folder, the following should work.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/Intro_to_Linux/genomes</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> genomes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </details>
 </div>
-<p><br>
-</p>
 
 
 </section>
