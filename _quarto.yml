@@ -22,8 +22,7 @@ website:
         text: Text Editors
       - href: 06_Bioinformatics.qmd
         text: Bioinformatics 101
-      - href: 07_Installation.qmd
-        text: Managing Software
+
 format:
   html:
     theme: cosmo
