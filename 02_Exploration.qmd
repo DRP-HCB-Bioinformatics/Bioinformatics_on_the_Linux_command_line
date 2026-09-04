@@ -98,7 +98,7 @@ cp -r /library/training/Intro_to_Linux ./
 **NOTE:** if you are working from your own server or system, download the data as followed and unpack it. You do NOT need to run the following if you are working on the DRP-HCB Bioinformatics server. Don't worry about the messages you get on screen, we will talk about these later on.
 
 ``` bash
-wget https://bifx-core3.bio.ed.ac.uk/~hdeweer/Intro_to_Linux.tar.gz
+wget https://github.com/DRP-HCB-Bioinformatics/Bioinformatics_on_the_Linux_command_line/raw/refs/heads/main/Intro_to_Linux.tar.gz
 tar -xzvf Intro_to_Linux.tar.gz
 ```
 

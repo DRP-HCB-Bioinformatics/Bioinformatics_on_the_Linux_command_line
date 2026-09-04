@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bioinformatics on the Linux command line – Introduction to Linux</title>
+<title>Text manipulation task – Introduction to Linux</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07_Task.html">Text manipulation task</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07_Task.html" class="sidebar-item-text sidebar-link">
+  <a href="./07_Task.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Text manipulation task</span></a>
   </div>
 </li>
@@ -214,7 +214,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-setup" id="toc-course-setup" class="nav-link active" data-scroll-target="#course-setup">Course Setup</a></li>
+  <li><a href="#unix-tools" id="toc-unix-tools" class="nav-link active" data-scroll-target="#unix-tools">Unix tools</a></li>
+  <li><a href="#inspecting-a-file" id="toc-inspecting-a-file" class="nav-link" data-scroll-target="#inspecting-a-file">Inspecting a file</a></li>
+  <li><a href="#cut-sort-and-uniq" id="toc-cut-sort-and-uniq" class="nav-link" data-scroll-target="#cut-sort-and-uniq">Cut, sort and uniq</a></li>
+  <li><a href="#playing-with-grep" id="toc-playing-with-grep" class="nav-link" data-scroll-target="#playing-with-grep">Playing with grep</a></li>
+  <li><a href="#sed-for-stream-editing" id="toc-sed-for-stream-editing" class="nav-link" data-scroll-target="#sed-for-stream-editing">Sed for stream editing</a></li>
+  <li><a href="#awk-and-perl-for-command-line-programming" id="toc-awk-and-perl-for-command-line-programming" class="nav-link" data-scroll-target="#awk-and-perl-for-command-line-programming">Awk and Perl for command line programming</a></li>
+  <li><a href="#sort-using-keys" id="toc-sort-using-keys" class="nav-link" data-scroll-target="#sort-using-keys">Sort using keys</a></li>
   </ul>
 </nav>
     </div>
@@ -223,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Bioinformatics on the Linux command line</h1>
+<h1 class="title">Text manipulation task</h1>
 </div>
 
 
@@ -241,37 +247,152 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="https://kit.fontawesome.com/ece750edd7.js" crossorigin="anonymous"></script>
-<p>Welcome to our introductory Linux command line workshop.</p>
-<p>During this course you will learn to:</p>
-<ul>
-<li>Connect to a server</li>
-<li>Navigate the file system using the Linux command shell</li>
-<li>Use basic shell commands to view and filter data</li>
-<li>Perform basic analysis with bioinformatics tools</li>
-</ul>
-<p>This course is hosted by the Bioinformatics Core at the <a href="https://biology.ed.ac.uk/drp">DRP-HCB</a>.</p>
-<section id="course-setup" class="level3">
-<h3 class="anchored">Course Setup</h3>
-<p>If you are using the DRP-HCB Bioinformatics server for this course then all of the data and software is already installed. If you are working through this course from a different Linux computer or server, please make sure the following tools are installed:</p>
-<div class="resources">
-<h2 class="anchored" data-anchor-id="course-setup">
-<i class="fas fa-save"></i> Required software
+<section id="unix-tools" class="level2">
+<h2 class="anchored" data-anchor-id="unix-tools">Unix tools</h2>
+<p>In this section we are going to use common Unix tools to reformat a text file containing genomic annotations (<code>GRCm39_ensembl_v110.txt</code>).</p>
+<div class="key-points">
+<h2 class="anchored">
+<i class="fas fa-thumbtack"></i> Key Points
 </h2>
 <ul>
-<li><a href="https://www.nano-editor.org/">nano</a></li>
-<li><a href="https://github.com/alexdobin/STAR">STAR</a></li>
-<li><a href="https://www.htslib.org/">samtools</a></li>
-<li><a href="https://bedtools.readthedocs.io/en/stable/">bedtools</a></li>
+<li><code>cut</code> to cut specific columns or characters from a file</li>
+<li><code>grep</code> for pattern searching and filtering</li>
+<li><code>sed</code> for text stream manipulation</li>
+<li><code>sort</code> to sort files</li>
+<li><code>uniq</code> to find unique entries</li>
+<li><code>awk</code> and <code>perl</code> for programming one-liners</li>
+<li><code>paste</code> and <code>cat</code> can be used to join files in different ways</li>
+<li><code>head</code>, <code>tail</code> and <code>less</code> are good for quick inspection</li>
+<li><code>wc</code> to count words or lines in a file</li>
 </ul>
-<p>An easy way to install is through <a href="https://continuumio-docs.readthedocs-hosted.com/miniconda/">conda</a>. Check out <a href="https://drp-hcb-bioinformatics.github.io/DRP-HCB-Bioinformatics/software.html">our guide</a> and explore how to install and work with conda. Tools can then be installed by downloading <a href="https://raw.githubusercontent.com/DRP-HCB-Bioinformatics/Bioinformatics_on_the_Linux_command_line/refs/heads/main/env/BotLcl.yml">the setup (yml) file</a> and running the following commands to install and activate the environment.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/DRP-HCB-Bioinformatics/Bioinformatics_on_the_Linux_command_line/refs/heads/main/env/BotLcl.yml</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> BotLcm.yml</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate BotLcm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
-
 </div>
+<p>The file <code>GRCm39_ensembl_v110.txt</code> has been downloaded from the <a href="https://www.ensembl.org/index.html">Ensembl</a> database and contains gene annotations for the GRCm39 mouse genome assembly.</p>
+<p>Ensembl files do not always play well with other genomic data as they use a different format. For instance, they do not use “chr” in the chromosome names and they use 1/-1 to denote strand instead of +/-.</p>
+<p>We would like to reformat this file to make it compatible with other genomic datasets:</p>
+<ul>
+<li>Add “chr” to the chromosome column</li>
+<li>Reformat the strand column to contain +/-</li>
+<li>Change the mitochondrial contig name from MT to M</li>
+<li>Select only protein coding genes</li>
+<li>Output a UCSC style <a href="https://en.wikipedia.org/wiki/BED_(file_format)">BED file</a>, a standard genomic annotation format with six columns (chromosome, start, end, name, score, strand).</li>
+</ul>
+</section>
+<section id="inspecting-a-file" class="level2">
+<h2 class="anchored" data-anchor-id="inspecting-a-file">Inspecting a file</h2>
+<p>We can start by inspecting the file with the <code>head</code> command and see how many lines it contains with <code>wc</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Move to the annotation task folder</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Intro_to_Linux/annotation_task</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Inspect the file</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> GRCm39_ensembl_v110.txt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> GRCm39_ensembl_v110.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The file contains 57187 lines and has the following columns: Chromosome/scaffold name, Gene start (bp), Gene end (bp), Strand, Gene name, Gene type.</p>
+</section>
+<section id="cut-sort-and-uniq" class="level2">
+<h2 class="anchored" data-anchor-id="cut-sort-and-uniq">Cut, sort and uniq</h2>
+<p>Let’s see which chromosomes are listed in the file. We can use <code>cut</code> to cut a specified column <code>-f</code> from our file. We then pipe the output into <code>uniq</code> to get unique values only.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## The cut command cuts </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 1 GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>That didn’t look right… <code>uniq</code> expects sorted input. We can use <code>sort</code> to sort the output before piping it into <code>uniq</code> or use the <code>-u</code> flag with <code>sort</code> to get unique values only.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 1 GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 1 GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="playing-with-grep" class="level2">
+<h2 class="anchored" data-anchor-id="playing-with-grep">Playing with grep</h2>
+<p>We have lots of random contigs. Let’s see how many of these there are. We’ll get rid of them later and just look at the primary assembly. We can use <code>grep</code> to search for lines that start with “GL” or “JH” and then invert the match with <code>-v</code> to exclude these lines.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Lines that start with GL</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"^GL"</span> GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Lines that start with GL or JH</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"^[GL,JH]"</span> GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">## Lines that do not start with GL or JH</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">"^[GL,JH]"</span> GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>While we’re at it, here are some other examples of <code>grep</code> commands:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Find the gene ENSMUSG00000064342</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> ENSMUSG00000064342 GRCm39_ensembl_v110.txt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Grep is case sensitive by default, so the next command won't find the gene</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> ensmusg00000064342 GRCm39_ensembl_v110.txt</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the -i flag to make the search case insensitive</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> ensmusg00000064342 GRCm39_ensembl_v110.txt</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">## Print the lines after the match</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-A</span> 2 ENSMUSG00000064342 GRCm39_ensembl_v110.txt</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">## Print the lines before the match</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-B</span> 2 ENSMUSG00000064342 GRCm39_ensembl_v110.txt</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">## Print the lines before and after the match</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-C</span> 2 ENSMUSG00000064342 GRCm39_ensembl_v110.txt</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">## Do we have RNA genes in the file?</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"RNA$"</span> GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">## Okay, what types of RNA genes are there?</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"RNA$"</span> GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f</span> 6 <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">## Let's find the total number of genes on chromosome 1. We need to find lines that start with "1" followed by the tab character. Otherwise, we will get lines starting with 10, 11, 12 etc. The tab character is represented by \t and we need to use the -P flag to enable grep to recognise this (Perl compatible regular expressions).</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">'^1\t'</span> GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">## We can use other regular expressions to pattern match specific gene names</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">'ENSMUSG[0]+[1-3]'</span> GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">'ENSMUSG[0]{4}[1-3]'</span> GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">head</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now that we’ve played with the file for a bit, let’s start manipulating it to get protein coding genes in the UCSC BED format. We can use <code>grep</code> to search for lines that contain “protein_coding” and then invert the match with <code>-v</code> to exclude these lines.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Start manipulating our file</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Protein coding genes in ucsc bed format</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">## grep -e '^Chr' will keep the header line, we will hang onto this for now</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">## grep -e 'protein_coding' will keep lines that contain 'protein_coding'</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">## grep -v '^[GH,JH]' will exclude lines that start with 'GH' or 'JH' and remove random contigs</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">## We will redirect the output to a new file called GRCm39_ensembl_v110.pc.txt </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-e</span> <span class="st">'^Chr'</span> <span class="at">-e</span> <span class="st">'protein_coding'</span> GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">'^[GH,JH]'</span> <span class="op">&gt;</span> GRCm39_ensembl_v110.pc.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sed-for-stream-editing" class="level2">
+<h2 class="anchored" data-anchor-id="sed-for-stream-editing">Sed for stream editing</h2>
+<p>The <code>sed</code> command is a stream editor that can perform basic text transformations on an input stream. It has many uses including removing lines and performing text substitutions.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">## sed 1d will delete the first line, removing our header</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> 1d GRCm39_ensembl_v110.pc.txt <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">## sed 1,3d can delete the first three lines</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> 1,3d GRCm39_ensembl_v110.pc.txt <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">## sed -e 's/^MT/M/g' will substitute 'MT' with 'M' when found at the start of the line. Ensembl uses 'MT' to denote the mitochondrial chromosome, but UCSC use 'chrM'.</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-e</span> <span class="st">'s/^MT/M/g'</span> <span class="at">-e</span> <span class="st">'1d'</span> GRCm39_ensembl_v110.pc.txt <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">## sed has a handy -i flag that allows us to edit the file in place rather than redirecting the output to a new file. Be careful with this as it will overwrite the original file. We can perform both steps by supplying multiple -e flags.</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="at">-e</span> <span class="st">'s/^MT/M/g'</span> <span class="at">-e</span> <span class="st">'1d'</span> GRCm39_ensembl_v110.pc.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can rerun everything we have done so far in a single command using pipes. We are also going to drop the sixth column as we don’t need the “Gene type” once we have selected protein coding genes and it is not a required column for BED format.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-e</span> <span class="st">'^Chr'</span> <span class="at">-e</span> <span class="st">'protein_coding'</span> GRCm39_ensembl_v110.txt <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">'^[GH,JH]'</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f</span> 1-5 <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-e</span> <span class="st">'s/^MT/M/g'</span> <span class="at">-e</span> <span class="st">'1d'</span> <span class="op">&gt;</span> GRCm39_ensembl_v110.pc.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="awk-and-perl-for-command-line-programming" class="level2">
+<h2 class="anchored" data-anchor-id="awk-and-perl-for-command-line-programming">Awk and Perl for command line programming</h2>
+<p>We now need to reformat the strand column to contain +/-. We can use <code>awk</code> to do this. Awk is a powerful programming language that is particularly well suited to text processing and text manipulation. Awk is convenient on the command line as it can be run in one line of code.</p>
+<p>We will also add “chr” to the chromosome column and reorder the columns to match the standard BED format.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">## -v sets variables for the awk program like OFS</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">## OFS is the output field separator, we set this to a tab character</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">## We use an if statement to check if the strand column is 1 or -1 and print the appropriate strand symbol</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">## We then print the letters "chr" followed by column 1 ($1)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">## We then print columns 2, 3, 5 and a 0 for the BED score column</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">## Finally, we redirect the output to a new file called GRCm39_ensembl_v110.pc.edit.bed</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-v</span> OFS=<span class="st">'\t'</span> <span class="st">'{ if($4==1){ print "chr"$1,$2,$3,$5,0,"+" }else{ print "chr"$1,$2,$3,$5,0,"-" }}'</span> GRCm39_ensembl_v110.pc.txt <span class="op">&gt;</span> GRCm39_ensembl_v110.pc.edit.bed</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">## We can get the same result using Perl, an alternative to awk</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">perl</span> <span class="at">-lane</span> <span class="st">'if($F[3]==1){$s="+";}else{$s="-";}; print "chr$F[0]\t$F[1]\t$F[2]\t$F[4]\t0\t$s";'</span> GRCm39_ensembl_v110.pc.txt <span class="op">&gt;</span> GRCm39_ensembl_v110.pc.pl.bed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Finally, we can sort the file.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Sort -k</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> GRCm39_ensembl_v110.pc.edit.bed</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> GRCm39_ensembl_v110.pc.edit.bed <span class="kw">|</span> <span class="fu">head</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">## This is not what we want, take a look at the sort manual</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> sort</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sort-using-keys" class="level2">
+<h2 class="anchored" data-anchor-id="sort-using-keys">Sort using keys</h2>
+<p>To sort the file by chromosome and then by start position we can use the <code>-k</code> flag to set sorting keys. The first k, uses column 1 with the <code>-V</code> flag. This is a “version” sort which is alphanumeric and will put chr1 first. The second key, uses column 2 with <code>-n</code> flag. This is a numerical sort and will place lower start positions first.</p>
+<p>The <code>-k</code> flag takes a start and end column separated by a column. It is possible to use multiple columns as a key e.g.&nbsp;1,4. If you want to use a single column then repeat the column number as below.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-k1,1V</span> <span class="at">-k2,2n</span> GRCm39_ensembl_v110.pc.edit.bed <span class="op">&gt;</span> GRCm39_ensembl_v110.pc.edit.sorted.bed</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> GRCm39_ensembl_v110.pc.edit.sorted.bed</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">## Success!!!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Note: Sort also has a <code>-r</code> flag for reverse or decreasing order.</p>
+
+
 </section>
 
 </main> <!-- /main -->

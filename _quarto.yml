@@ -22,6 +22,8 @@ website:
         text: Text Editors
       - href: 06_Bioinformatics.qmd
         text: Bioinformatics 101
+      - href: 07_Task.qmd
+        text: Text manipulation task
 
 format:
   html:

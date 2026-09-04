@@ -110,7 +110,7 @@ Try using different single letter options with the `date` command. Can you find 
 ::: solution
 <h2><i class="far fa-eye"></i> Solution:</h2>
 
-Run date with -p (`date -p`), you should get an error telling you what you are doing is invalid.
+Run `date -p`, you should get an error telling you what you are doing is invalid.
 
 :::
 

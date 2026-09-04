@@ -146,34 +146,34 @@
 }
 .key-points h2, .key-points h2 i { color: #437a6e; }
 
-/* Objectives (Teal - Top Accent) */
+/* Objectives (Teal - Left Accent) */
 .objectives {
   background: #f2f7f8;
   border-style: solid;
-  border-width: 4px 1px 1px 1px;
-  border-color: #5b9aa0 #dbe6e8 #dbe6e8 #dbe6e8;
-  border-radius: 0 0 8px 8px;
+  border-width: 1px 1px 1px 5px;
+  border-color: #dbe6e8 #dbe6e8 #dbe6e8 #5b9aa0;
+  border-radius: 0 8px 8px 0;
   color: #243d40;
 }
 .objectives h2, .objectives h2 i { color: #3b6b70; }
 
-/* Discussion (Terracotta - Top Accent) */
+/* Discussion (Terracotta - Left Accent) */
 .discussion {
   background: #fbf1ef;
   border-style: solid;
-  border-width: 4px 1px 1px 1px;
-  border-color: #c8553d #f2ded9 #f2ded9 #f2ded9;
-  border-radius: 0 0 8px 8px;
+  border-width: 1px 1px 1px 5px;
+  border-color: #f2ded9 #f2ded9 #f2ded9 #c8553d ;
+  border-radius: 0 8px 8px 0;
   color: #4a1e16;
 }
 .discussion h2, .discussion h2 i { color: #a43e28; }
 
-/* Resources (Taupe - Top Accent) */
+/* Resources (Taupe - Left Accent) */
 .resources {
   background: #f7f6f3;
   border-style: solid;
-  border-width: 4px 1px 1px 1px;
-  border-color: #a79e84 #e8e5de #e8e5de #e8e5de;
+  border-width: 1px 1px 1px 5px;
+  border-color: #e8e5de #e8e5de #e8e5de #a79e84;
   border-radius: 0 0 8px 8px;
   color: #3f3a2f;
 }
