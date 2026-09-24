@@ -35,7 +35,7 @@ An easy way to install is through [conda](https://continuumio-docs.readthedocs-h
 ``` bash
 wget https://raw.githubusercontent.com/DRP-HCB-Bioinformatics/Bioinformatics_on_the_Linux_command_line/refs/heads/main/env/BotLcl.yml
 
-conda env create -f BotLcm.yml
+conda env create -f BotLcl.yml
 
 conda activate BotLcm
 ``` 
